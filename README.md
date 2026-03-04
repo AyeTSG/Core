@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/user-attachments/assets/2c450d60-6573-4545-8b20-f6190a87827e" width="126" height="126"/>
+<img src="https://github.com/user-attachments/assets/149ad432-c644-4692-b14f-39eb73048a91" width="126" height="126"/>
 
 </div>
 
@@ -18,7 +18,8 @@
 **`Core`** aims to elevate the workflow for **JsonAsAsset**, making it easier to set up builds and port assets.
 
 <a name="how-to-use"></a>
-# ⭐ How to Use
+# ⭐ How to Use![Uploading icon.png…]()
+
 
 1. **Visit the Releases Page:**  
    Go to the [Releases page](/../../releases), and download the latest release.
