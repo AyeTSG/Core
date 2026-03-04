@@ -8,7 +8,7 @@ namespace vj0.Core;
 public static class Globals
 {
     /* Format: 0.0.0.0 */
-    public const string VERSION = "0.0.4.7";
+    public const string VERSION = "0.0.4.8";
     public const string COMMIT = "";
     
     public static bool IS_COMMIT_AVAILABLE => !string.IsNullOrEmpty(COMMIT);
@@ -17,7 +17,7 @@ public static class Globals
     /* Application Metadata */
     public const string CODENAME = "vj0";
     
-    public const string APP_NAME = "j0.dev";
+    public const string APP_NAME = "Core";
     public const string INSTANCE_NAME = $"{APP_NAME}.SingleInstance";
 
     /* GitHub Metadata */

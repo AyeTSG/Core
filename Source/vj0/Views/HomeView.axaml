@@ -25,19 +25,6 @@
     <Grid>
         <navigation:NavigationFrame>
             <Grid Background="Transparent">
-                <!-- Background blur effect -->
-                <Border Width="450" Height="76" Margin="0 0 0 -80" Opacity="0.2"
-                        HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                            <GradientStop Color="White" Offset="0"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <Border.Effect>
-                        <BlurEffect Radius="250"/>
-                    </Border.Effect>
-                </Border>
-                
                 <controls:CursorEffectControl/>
                 
                 <Grid>
@@ -51,8 +38,14 @@
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center" Spacing="30" Margin="0 0 0 0">
                         <!-- App icon -->
                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Image Height="300" HorizontalAlignment="Center"
-                                   Source="/Assets/Icon/App.Icon.png" Margin="0 0 0 -80"/>
+                            <Image Height="200" HorizontalAlignment="Center" PointerEntered="InputElement_OnPointerEntered"
+                                   Source="/Assets/Icon/App.Icon.png" Margin="0 0 0 -0"/>
+                            <Image Height="200" HorizontalAlignment="Center" PointerEntered="InputElement_OnPointerEntered" Name="Logo"
+                                   Source="/Assets/Icon/App.Icon.png" Margin="0 0 0 -0">
+                                <Image.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Image.RenderTransform>
+                            </Image>
                         </Grid>
                         
                         <!-- Fixed container for tagline text to prevent layout shifts -->

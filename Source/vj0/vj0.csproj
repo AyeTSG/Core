@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <AssemblyName>j0.dev</AssemblyName>
+      <AssemblyName>Core</AssemblyName>
       <ApplicationIcon>Assets/Icon/App.ico</ApplicationIcon>
       
-      <Product>j0.dev</Product>
+      <Product>Core</Product>
       <Authors>Tector</Authors>
 
       <FileVersion>1.0.0.0</FileVersion>

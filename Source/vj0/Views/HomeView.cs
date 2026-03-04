@@ -67,7 +67,7 @@ public partial class HomeView : ViewBase<HomeViewModel>
         const double startScale = 1.0;
         const double endScale = 20.0;
         const double durationMs = 800;
-        const int stepMs = 16;
+        const int stepMs = 6;
 
         var startOpacity = HeartScale.Opacity;
         const double endOpacity = 0.0;
@@ -104,5 +104,58 @@ public partial class HomeView : ViewBase<HomeViewModel>
     private void Donate_OnPointerEntered(object? sender, PointerEventArgs e)
     {
         Donate_OnPointerPressed(sender);
+    }
+    
+    static bool IsLogoAnimationPlaying;
+    
+    private async void PlayLogoAnimation()
+    {
+        if (IsLogoAnimationPlaying) return;
+        
+        if (Logo?.RenderTransform is not ScaleTransform Transform)
+        {
+            return;
+        }
+
+        const double startScale = 1.0;
+        const double endScale = 3.5;
+        const double durationMs = 30;
+        const int stepMs = 2;
+
+        var startOpacity = Logo.Opacity;
+        const double endOpacity = 0.0;
+
+        double elapsed = 0;
+        
+        IsLogoAnimationPlaying = true;
+
+        while (elapsed < durationMs)
+        {
+            var time = elapsed / durationMs;
+            var eased = new CubicEaseOut().Ease(time);
+
+            var currentScale = startScale + (endScale - startScale) * eased;
+            var currentOpacity = startOpacity + (endOpacity - startOpacity) * eased;
+
+            Transform.ScaleX = currentScale;
+            Transform.ScaleY = currentScale;
+            Logo.Opacity = currentOpacity;
+
+            await Task.Delay(stepMs);
+            
+            elapsed += stepMs;
+        }
+
+        Transform.ScaleX = 1.0;
+        Transform.ScaleY = 1.0;
+        
+        Logo.Opacity = 1.0;
+        
+        IsLogoAnimationPlaying = false;
+    }
+
+    private void InputElement_OnPointerEntered(object? sender, PointerEventArgs e)
+    {
+        PlayLogoAnimation();
     }
 }

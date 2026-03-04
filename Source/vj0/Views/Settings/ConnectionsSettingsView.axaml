@@ -22,7 +22,7 @@
                 
                 <controls:SettingsExpander Header="Discord Rich Presence" Description="Displays the application's information in your discord profile.">
                     <controls:SettingsExpander.IconSource>
-                        <controls:BitmapIconSource UriSource="avares://j0.dev/Assets/Brands/Scaled/Discord.20px.png" />
+                        <controls:BitmapIconSource UriSource="avares://Core/Assets/Brands/Scaled/Discord.20px.png" />
                     </controls:SettingsExpander.IconSource>
                     
                     <controls:SettingsExpander.Footer>
