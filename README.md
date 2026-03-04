@@ -18,7 +18,7 @@
 **`Core`** aims to elevate the workflow for **JsonAsAsset**, making it easier to set up builds and port assets.
 
 <a name="how-to-use"></a>
-# ⭐ How to Use![Uploading icon.png…]()
+# ⭐ How to Use
 
 
 1. **Visit the Releases Page:**  
