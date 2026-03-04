@@ -19,7 +19,7 @@
     d:DesignHeight="280">
 
   <Border
-    CornerRadius="12"
+    CornerRadius="25"
     x:Name="ProfileCardBackground"
     Background="{DynamicResource ProfileCardBackground}"
     PointerEntered="OnCardPointerEntered"

@@ -35,7 +35,7 @@
                 </ResourceDictionary>
             </Button.Resources>
                 
-            <avalonia:FluentIcon Foreground="White" Opacity="1" FontSize="23" Icon="AlbumAdd"/>
+            <avalonia:FluentIcon Foreground="White" Opacity="1" FontSize="23" Icon="PersonAdd"/>
         </Button>
     </StackPanel>
 </UserControl>

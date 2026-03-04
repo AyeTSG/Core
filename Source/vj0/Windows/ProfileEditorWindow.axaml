@@ -133,6 +133,7 @@
                                 Padding="10 0"
                                 Classes="Glass SoftGlass HoverLift"
                                 HorizontalAlignment="Right"
+                                CornerRadius="10"
                                 Click="Button_FetchFromDataBase"
                                 ToolTip.Tip="Fetch AES keys and mappings from online archives">
 
@@ -141,6 +142,7 @@
                         
                         <Button Width="45"
                                 Height="35"
+                                CornerRadius="10"
                                 Padding="10 0"
                                 Classes="Glass SoftGlass HoverLift"
                                 HorizontalAlignment="Right"
@@ -184,7 +186,7 @@
                                 FontSize="15"
                                 Padding="10 0"
                                 FontWeight="Bold"
-                                CornerRadius="4">
+                                CornerRadius="10">
                                                         
                             <ToolTip.Tip>
                                 <StackPanel Orientation="Horizontal">
@@ -220,7 +222,7 @@
                                 FontSize="13"
                                 BorderThickness="1"
                                 Padding="10 0"
-                                CornerRadius="4">
+                                CornerRadius="10">
                             
                             <ToolTip.Tip>
                                 <StackPanel Orientation="Horizontal">

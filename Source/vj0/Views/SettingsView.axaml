@@ -8,7 +8,6 @@
     xmlns:views="clr-namespace:vj0.Views.Settings"
     xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
     xmlns:vj0="clr-namespace:vj0"
-    xmlns:vj0.Core="clr-namespace:vj0.Core;assembly=vj0.Core"
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
     xmlns:viewModels1="clr-namespace:vj0.ViewModels"
 
@@ -37,11 +36,11 @@
         </Style>
         
         <Style Selector="controls|NavigationView.has-profile /template/ ScrollViewer#MenuItemsScrollViewer">
-            <Setter Property="Margin" Value="0,232,0,2"/>
+            <Setter Property="Margin" Value="0,200,0,2"/>
         </Style>
         
         <Style Selector="navigation|NavigationFrame.has-profile">
-            <Setter Property="Margin" Value="0,232,0,0"/>
+            <Setter Property="Margin" Value="0,200,0,0"/>
         </Style>
     </UserControl.Styles>
     
@@ -100,7 +99,7 @@
                 Name="EditProfileButton"
                 VerticalAlignment="Top"
                 Classes="Glass GlassDarkerInteraction HoverLift"
-                CornerRadius="12"
+                CornerRadius="20"
                 Width="393"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"
@@ -110,7 +109,7 @@
                 Focusable="False"
                 IsDefault="False"
                 ClipToBounds="False"
-                Height="180">
+                Height="144">
             
             <Grid Background="Transparent">
                 <Grid Opacity="0.4" IsVisible="True" HorizontalAlignment="Left">
@@ -134,9 +133,12 @@
                 <TextBlock Margin="15 78 0 0" HorizontalAlignment="Left" FontSize="35" FontWeight="DemiBold" TextTrimming="CharacterEllipsis"
                            TextWrapping="NoWrap" MaxWidth="270" Text="{Binding CurrentProfile.Name}"></TextBlock>
                 
-                <TextBlock Margin="15 132 0 0" FontSize="20" Opacity="0.5">Edit Profile</TextBlock>
-                
-                <controls:SymbolIcon HorizontalAlignment="Right" Margin="0 0 25 0" FontSize="35" Symbol="Settings"></controls:SymbolIcon>
+                <fluent:FluentIcon
+                    Icon="Person"
+                    HorizontalAlignment="Right"
+                    IconSize="Size32"
+                    Margin="0 0 25 0" FontSize="35"
+                    IconVariant="Regular"/>
             </Grid>
         </Button>
     </Grid>

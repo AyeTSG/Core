@@ -80,7 +80,7 @@
                                 
                                 <Button Click="OpenKoFi" ToolTip.Tip="Help support us, it really means a lot."
                                         ClipToBounds="False"
-                                        CornerRadius="10"
+                                        CornerRadius="15"
                                         Cursor="Hand" HorizontalAlignment="Stretch" Padding="20 0" Height="43"
                                         Classes="Glass WhiteOutline RedPressedOutline HoverLift" HorizontalContentAlignment="Center"
                                         PointerEntered="Donate_OnPointerEntered"
@@ -119,7 +119,7 @@
                             <Button Click="OpenDiscord" Cursor="Hand" ToolTip.Tip="Discord"
                                     HorizontalAlignment="Stretch" Height="40" Width="40"
                                     HorizontalContentAlignment="Center"
-                                    Classes="HoverLift"
+                                    Classes="HoverLift" CornerRadius="25"
                                     VerticalContentAlignment="Center">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <Image Source="/Assets/Brands/Scaled/Discord.20px.png"
@@ -131,7 +131,7 @@
                             <Button Click="OpenGitHub" Cursor="Hand" ToolTip.Tip="GitHub"
                                     HorizontalAlignment="Stretch" Height="40" Width="40"
                                     HorizontalContentAlignment="Center"
-                                    Classes="HoverLift"
+                                    Classes="HoverLift" CornerRadius="25"
                                     VerticalContentAlignment="Center">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <avalonia:MaterialIcon Width="20" Kind="Github"
@@ -143,7 +143,7 @@
                             <Button Click="OpenXAccount" Cursor="Hand" ToolTip.Tip="X"
                                     HorizontalAlignment="Stretch" Height="40" Width="40"
                                     HorizontalContentAlignment="Center"
-                                    Classes="HoverLift"
+                                    Classes="HoverLift" CornerRadius="25"
                                     VerticalContentAlignment="Center">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <Image Source="/Assets/Brands/Scaled/X.25px.png"
@@ -157,7 +157,7 @@
                                     Orientation="Horizontal" Spacing="15">
                             
                             <!-- Get Started button -->
-                            <Button Click="GetStarted"
+                            <Button Click="GetStarted" CornerRadius="25"
                                     Classes="White PressScale"
                                     Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
                                     IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=!DoesProfileExist}"
@@ -173,7 +173,7 @@
                             
                             <Grid IsVisible="{x:Static vj0:Globals.IsReadyToExplore}">
                                 <!-- Explore Files button -->
-                                <Button Click="ExploreFiles"
+                                <Button Click="ExploreFiles" CornerRadius="25"
                                         Classes="White PressScale"
                                         Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
                                         IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=IsProfileInitialized}"
