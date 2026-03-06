@@ -45,7 +45,6 @@ public class HomeViewModel : ViewModelBase
         "we are a triangle now?!?!?",
         "▲ for your pardon",
         "ᰔ",
-        "this build is haunted",
         "ㅇㅅㅇ",
         "◬",
         "△",

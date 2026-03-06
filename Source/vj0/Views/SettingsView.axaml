@@ -136,8 +136,7 @@
                         SplashScale="3"/>
                 </Grid>
                 
-                <TextBlock Margin="15 78 0 0" HorizontalAlignment="Left" FontSize="35" FontWeight="DemiBold" TextTrimming="CharacterEllipsis"
-                           TextWrapping="NoWrap" MaxWidth="270" Text="{Binding CurrentProfile.Name}"></TextBlock>
+                <TextBlock Margin="15 78 0 0" HorizontalAlignment="Left" FontSize="35" FontWeight="DemiBold" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" MaxWidth="270" Text="{Binding CurrentProfile.Name}"></TextBlock>
                 
                 <fluent:FluentIcon
                     Icon="PersonEdit"

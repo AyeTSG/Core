@@ -114,11 +114,11 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
                 Title = new StackPanel
                 {
                     Orientation = Orientation.Horizontal,
-                    Spacing = 12,
+                    Spacing = 15,
                     Margin = new Thickness(0, 0, 0, 5),
                     Children =
                     {
-                        new ProfileSplashControl(1.5f)
+                        new ProfileSplashControl(2.5f)
                         {
                             DataContext = profile
                         },
