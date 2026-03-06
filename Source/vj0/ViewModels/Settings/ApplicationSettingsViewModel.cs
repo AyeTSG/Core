@@ -28,8 +28,6 @@ public partial class ApplicationSettingsViewModel : ViewModelBase
     [JsonIgnore] public NavigationTransitionInfo Transition => UseTabTransitions
         ? new SlideNavigationTransitionInfo()
         : new SuppressNavigationTransitionInfo();
-
-    [ObservableProperty] private bool _syncFModel = false;
     
     partial void OnGameLanguageChanged(ELanguage value)
     {

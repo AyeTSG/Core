@@ -230,7 +230,7 @@
     
     <!-- White Button -->
     <Style Selector="Button.White">
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="CornerRadius" Value="20" />
         <Setter Property="FontSize" Value="19" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Background" Value="#ffffff" />
@@ -323,7 +323,7 @@
     
     <!-- Content Secondary Button -->
     <Style Selector="Button.ContentSecondary">
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="CornerRadius" Value="20" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="Background" Value="{DynamicResource ContentDialogBlackButtonBackground}" />
@@ -375,7 +375,7 @@
     
     <!-- Content Primary Button -->
     <Style Selector="Button.ContentPrimary">
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="CornerRadius" Value="20" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Background" Value="White" />

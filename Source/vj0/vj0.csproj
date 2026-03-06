@@ -215,6 +215,9 @@
     <Compile Update="Controls\Window\BaseTitleBar.cs">
       <DependentUpon>BaseTitleBar.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Settings\UpdatesSettingsView.cs">
+      <DependentUpon>UpdatesSettingsView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

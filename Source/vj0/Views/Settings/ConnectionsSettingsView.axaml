@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
+    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
 
     x:Class="vj0.Views.Settings.ConnectionsSettingsView"
     x:DataType="settings:ConnectionsSettingsViewModel"
@@ -18,9 +19,19 @@
 
         <ScrollViewer Classes="SettingsScrollViewer">
             <StackPanel Classes="SettingsStackPanel">
-                <TextBlock Classes="SettingsCategory" Text="Presence"/>
+                <TextBlock Classes="SettingsCategory" Text="Applications"/>
                 
-                <controls:SettingsExpander Header="Discord Rich Presence" Description="Displays the application's information in your discord profile.">
+                <controls:SettingsExpander Header="FModel Synchronization" Description="Automatically save and sync all profiles with FModel.">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:FluentIconSource Icon="PersonLightning" />
+                    </controls:SettingsExpander.IconSource>
+                    
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch IsChecked="{Binding SyncFModel}" Cursor="Hand"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+                
+                <controls:SettingsExpander Header="Discord Presence" Description="Displays the application's status in your discord profile.">
                     <controls:SettingsExpander.IconSource>
                         <controls:BitmapIconSource UriSource="avares://Core/Assets/Brands/Scaled/Discord.20px.png" />
                     </controls:SettingsExpander.IconSource>

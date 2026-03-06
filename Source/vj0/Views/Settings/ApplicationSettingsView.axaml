@@ -23,16 +23,6 @@
             <StackPanel Classes="SettingsStackPanel">
                 <TextBlock Classes="SettingsCategory" Text="Convenience"/>
                 
-                <controls:SettingsExpander Header="Sync to FModel" Description="Use Core's Profile system in FModel. (wipes any old data in FModel)">
-                    <controls:SettingsExpander.IconSource>
-                        <fluent:FluentIconSource Icon="CubeSync" />
-                    </controls:SettingsExpander.IconSource>
-                    
-                    <controls:SettingsExpander.Footer>
-                        <ToggleSwitch IsChecked="{Binding SyncFModel}" Cursor="Hand"/>
-                    </controls:SettingsExpander.Footer>
-                </controls:SettingsExpander>
-                
                 <controls:SettingsExpander
                     Header="Auto-Load Last Profile"
                     Description="Automatically launches the last used profile on startup.">

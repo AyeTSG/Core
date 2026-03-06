@@ -16,7 +16,7 @@
         <Setter Property="Background" Value="{DynamicResource ContentDialogABackground}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ContentDialogABorderBrush}"/>
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="CornerRadius" Value="25" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -48,7 +48,7 @@
                                                   HorizontalScrollBarVisibility="Disabled"
                                                   VerticalScrollBarVisibility="Auto">
                                         <Border
-                                                Padding="25"
+                                                Padding="35"
                                                 BorderThickness="{StaticResource ContentDialogSeparatorThickness}"
                                                 BorderBrush="{DynamicResource ContentDialogSeparatorBorderBrush}">
                                             <Grid RowDefinitions="Auto,*" >
@@ -95,7 +95,7 @@
                                             HorizontalAlignment="Stretch"
                                             VerticalAlignment="Bottom"
                                             BorderThickness="0 1 0 0"
-                                            Padding="0 15 0 15">
+                                            Padding="0 15 0 25">
                                         <StackPanel Name="CommandSpace" Spacing="10" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 15 0">
                                             <Button Name="SecondaryButton"
                                                     Classes="ContentSecondary HoverLift"

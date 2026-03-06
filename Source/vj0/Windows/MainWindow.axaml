@@ -135,7 +135,7 @@
                                      Message="{Binding Message}"
                                      Severity="{Binding Severity}"
                                      
-                                     CornerRadius="8"
+                                     CornerRadius="15"
                                      Classes="FadeIn"
                                      
                                      Margin="25 2"

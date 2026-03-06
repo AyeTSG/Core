@@ -21,7 +21,7 @@
             <StackPanel Classes="SettingsStackPanel">
                 <TextBlock Classes="SettingsCategory" Text="Data Reading"/>
                 
-                <controls:SettingsExpander Header="Serialize Shader Maps" Description="Useful for analyzing cooked material render data.">
+                <controls:SettingsExpander Header="Shader Maps" Description="Useful for analyzing cooked material render data.">
                     <controls:SettingsExpander.IconSource>
                         <fluent:SymbolIconSource Symbol="CircleShadow" />
                     </controls:SettingsExpander.IconSource>
@@ -31,11 +31,9 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
-                <TextBlock Classes="SettingsCategory" Text="Bytecode"/>
-                
-                <controls:SettingsExpander Header="Serialize Bytecode" Description="Required for parsing logic, function graphs, and native bindings.">
+                <controls:SettingsExpander Header="Bytecode" Description="Required for parsing logic, function graphs, and native bindings.">
                     <controls:SettingsExpander.IconSource>
-                        <fluent:SymbolIconSource Symbol="BarcodeScanner" />
+                        <fluent:SymbolIconSource Symbol="Badge" />
                     </controls:SettingsExpander.IconSource>
                     
                     <controls:SettingsExpander.Footer>
