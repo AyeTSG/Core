@@ -148,11 +148,11 @@
             <ContentControl ClipToBounds="False" Content="{Binding CurrentToolbarContent}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             
             <StackPanel Orientation="Horizontal" Spacing="10" ClipToBounds="False">
-                <!-- Cloud Service -->
+                <!-- Cloud -->
                 <Button Name="Cloud" ClipToBounds="False" IsVisible="{Binding IsAPIServiceEnabled}" Height="40" Background="Transparent" CornerRadius="8" Classes="HoverLift">
                     <ToolTip.Tip>
                         <StackPanel Orientation="Vertical" Spacing="3" Margin="5">
-                            <TextBlock VerticalAlignment="Center" FontWeight="Medium">Cloud Service</TextBlock>
+                            <TextBlock VerticalAlignment="Center" FontWeight="Medium">Cloud</TextBlock>
                             <TextBlock VerticalAlignment="Center" Opacity="0.4" MaxWidth="200" FontSize="13">Locally hosted API to interact with CUEParse</TextBlock>
                         </StackPanel>
                     </ToolTip.Tip>
