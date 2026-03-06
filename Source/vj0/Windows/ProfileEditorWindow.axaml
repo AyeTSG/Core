@@ -87,7 +87,7 @@
                                 
                             <controls:NavigationViewItem.IconSource>
                                 <fluent:FluentIconSource
-                                    Icon="BeakerSettings"/>
+                                    Icon="Beaker"/>
                             </controls:NavigationViewItem.IconSource>
                         </controls:NavigationViewItem>
                     </controls:NavigationView.FooterMenuItems>

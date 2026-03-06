@@ -25,16 +25,16 @@
                 <!-- Override Mappings -->
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <Border Background="{DynamicResource ExpanderHeaderBackground}" BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}" BorderThickness="1" CornerRadius="20">
-                        <Grid Margin="25">
+                        <Grid Margin="28">
                             <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
                                     <StackPanel>
-                                        <avalonia:FluentIcon HorizontalAlignment="Left" Opacity="0.8" Icon="DataScatter" FontSize="15"/>
+                                        <avalonia:FluentIcon HorizontalAlignment="Left" Opacity="0.8" Icon="Database" FontSize="15"/>
                                     </StackPanel>
                             
                                     <StackPanel Orientation="Vertical" Spacing="3">
                                         <TextBlock Text="Override Mappings File" FontSize="16" VerticalAlignment="Center"/>
-                                        <TextBlock Text="Use custom mapping configurations" FontSize="14" Opacity="0.66" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Use custom mapping configurations" FontSize="14" Opacity="0.7" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </StackPanel>
                                 

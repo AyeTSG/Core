@@ -106,9 +106,7 @@
                             <controls:InfoBadge Background="{DynamicResource Accent}" Margin="0 5 -8 0" Height="6" Width="6" Padding="0 0 0 0" IsVisible="{Binding !DoesProfileExist}" />
                         </controls:NavigationViewItem.InfoBadge>
                         
-                        <Grid>
-                            <fluent:SymbolIcon Width="20" Symbol="Person"/>
-                        </Grid>
+                        <fluent:SymbolIcon Width="20" Symbol="Person"/>
                     </controls:NavigationViewItem>
                     
                     <controls:NavigationViewItemSeparator Margin="0 5" CornerRadius="15"/>
