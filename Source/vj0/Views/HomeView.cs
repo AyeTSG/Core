@@ -68,7 +68,7 @@ public partial class HomeView : ViewBase<HomeViewModel>
         }
 
         const double startScale = 1.0;
-        const double endScale = 20.0;
+        const double endScale = 10.0;
         const double durationMs = 800;
         const int stepMs = 6;
         

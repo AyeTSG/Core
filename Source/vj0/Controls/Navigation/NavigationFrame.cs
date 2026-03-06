@@ -81,6 +81,6 @@ public partial class NavigationFrame : ContentControl
             _contentBorder.BorderBrush = BorderOverride;
         }
 
-        _contentBorder.Margin = DisableMargin ? new Thickness(0) : new Thickness(0, 0, 12, 12);
+        _contentBorder.Margin = DisableMargin ? new Thickness(0) : new Thickness(0, 0, 20, 20);
     }
 }

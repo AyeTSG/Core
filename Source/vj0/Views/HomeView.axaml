@@ -38,8 +38,8 @@
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center" Spacing="30" Margin="0 0 0 0">
                         <!-- App icon -->
                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Image Height="200" HorizontalAlignment="Center" PointerEntered="InputElement_OnPointerEntered" Source="/Assets/Icon/App.Icon.png" Margin="0 0 0 25"/>
-                            <Image Height="200" HorizontalAlignment="Center" Opacity="0" Name="Logo" Source="/Assets/Icon/App.Icon.png" Margin="0 -120 0 0">
+                            <Image Height="250" HorizontalAlignment="Center" PointerEntered="InputElement_OnPointerEntered" Source="/Assets/Icon/App.Icon.png" Margin="0 0 0 25"/>
+                            <Image Height="250" HorizontalAlignment="Center" Opacity="0" Name="Logo" IsHitTestVisible="False" Source="/Assets/Icon/App.Icon.png" Margin="0 -70 0 0">
                                 <Image.RenderTransform>
                                     <ScaleTransform ScaleX="1" ScaleY="1"/>
                                 </Image.RenderTransform>
@@ -48,12 +48,13 @@
                         
                         <!-- Fixed container for tagline text to prevent layout shifts -->
                         <Border HorizontalAlignment="Center" 
-                                Height="35"
+                                Height="50"
                                 MinWidth="400">
                             
                             <TextBlock x:Name="RotatingTaglineText"
                                        Foreground="{DynamicResource AnimatingTextBrush}"
                                        FontSize="26"
+                                       FontWeight="Bold"
                                        HorizontalAlignment="Center"
                                        
                                        properties:GradientAnimationService.IsAnimated="True"
@@ -116,7 +117,7 @@
                             </Grid>
                             
                             <!-- Discord button -->
-                            <Button Click="OpenDiscord" Cursor="Hand" ToolTip.Tip="Discord"
+                            <Button Click="OpenDiscord" Cursor="Hand"
                                     HorizontalAlignment="Stretch" Height="40" Width="40"
                                     HorizontalContentAlignment="Center"
                                     Classes="HoverLift" CornerRadius="25"
@@ -128,7 +129,7 @@
                             </Button>
                             
                             <!-- GitHub button -->
-                            <Button Click="OpenGitHub" Cursor="Hand" ToolTip.Tip="GitHub"
+                            <Button Click="OpenGitHub" Cursor="Hand"
                                     HorizontalAlignment="Stretch" Height="40" Width="40"
                                     HorizontalContentAlignment="Center"
                                     Classes="HoverLift" CornerRadius="25"
@@ -140,7 +141,7 @@
                             </Button>
                             
                             <!-- X button -->
-                            <Button Click="OpenXAccount" Cursor="Hand" ToolTip.Tip="X"
+                            <Button Click="OpenXAccount" Cursor="Hand"
                                     HorizontalAlignment="Stretch" Height="40" Width="40"
                                     HorizontalContentAlignment="Center"
                                     Classes="HoverLift" CornerRadius="25"
@@ -192,9 +193,9 @@
             </Grid>
         </navigation:NavigationFrame>
         
-        <Border Margin="0 0 12 0" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="0 0 0 25" VerticalAlignment="Top" Width="120" Height="40"/>
-        <Border Margin="0 0 0 12" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Center" BorderThickness="1 1 1 0" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="25 25 0 0" VerticalAlignment="Bottom" Width="450" Height="40"/>
-        <StackPanel ClipToBounds="False" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 20">
+        <Border Margin="0 0 20 0" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="0 0 0 25" VerticalAlignment="Top" Width="120" Height="40"/>
+        <Border Margin="0 0 0 20" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Center" BorderThickness="1 1 1 0" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="25 25 0 0" VerticalAlignment="Bottom" Width="450" Height="40"/>
+        <StackPanel ClipToBounds="False" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 26">
             <StackPanel x:Name="TipContainer" Orientation="Horizontal" Spacing="5">
                 <avalonia:MaterialIcon Kind="Bulb"  Opacity="0.7"/>
                 <TextBlock x:Name="TipText" Text="" HorizontalAlignment="Center" Opacity="0.8"/>
