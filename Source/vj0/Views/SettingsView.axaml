@@ -10,6 +10,7 @@
     xmlns:vj0="clr-namespace:vj0"
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
     xmlns:viewModels1="clr-namespace:vj0.ViewModels"
+    xmlns:framework="clr-namespace:vj0.Services.Framework"
 
     x:Class="vj0.Views.SettingsView"
     x:DataType="viewModels1:SettingsViewModel"
@@ -118,8 +119,13 @@
                 Height="144">
             
             <Grid Background="Transparent">
-                <Grid Opacity="0.4" IsVisible="True" HorizontalAlignment="Left">
-                    <Border Background="White" Height="40" Width="50" Margin="35 25 0 140">
+                <Grid Opacity="1" IsVisible="True" HorizontalAlignment="Left">
+                    <Border
+                        Opacity="{Binding Source={x:Static framework:AppServices.MainWM}, Path=TitleBarOpacity}"
+                        Background="{Binding Source={x:Static framework:AppServices.MainWM}, Path=CurrentProfile.Display.GradientBrush}"
+                        Height="60"
+                        Width="70"
+                        Margin="25 25 0 140">
                         <Border.Effect>
                             <BlurEffect Radius="50"/>
                         </Border.Effect>

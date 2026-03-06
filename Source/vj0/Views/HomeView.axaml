@@ -73,9 +73,9 @@
                             
                             <!-- Donate button -->
                             <Grid>
-                                <Border Margin="-35 0 -35 0" Opacity="0.65" Background="#ff1c68" Width="150" Height="25">
+                                <Border Margin="-35 0 -35 0" Opacity="0.65" Background="#ff1c68" Width="150" Height="30">
                                     <Border.Effect>
-                                        <BlurEffect Radius="90"/>
+                                        <BlurEffect Radius="70"/>
                                     </Border.Effect>
                                 </Border>
                                 
@@ -88,7 +88,7 @@
                                         VerticalContentAlignment="Center">
                                     <StackPanel Orientation="Horizontal" Spacing="16">
                                         <Grid>
-                                            <Viewbox Width="22" Height="22" Stretch="Uniform">
+                                            <Viewbox Width="35" Height="22" Stretch="Uniform">
                                                 <Path Fill="#ff1c68"
                                                       Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
                                                 <Viewbox.Effect>

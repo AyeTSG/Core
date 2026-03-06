@@ -24,13 +24,13 @@
         <window:BaseTitleBar.LeftItems>
             <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Opacity="0.1" Text="/"/>
             
-            <Grid Name="ProfileContainer" IsVisible="{Binding DoesProfileExist}" Margin="0 1 0 0">
+            <Grid Name="ProfileContainer" IsVisible="{Binding DoesProfileExist}">
                 <!-- 
                 
                 Title Bar Gradient
                 -->
                 <Grid Opacity="0.5" Name="TitleBarGradient" IsVisible="True">
-                    <Border Margin="10 0 10 0" Opacity="{Binding TitleBarOpacity}" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="25">
+                    <Border Margin="25 0 25 0" Opacity="{Binding TitleBarOpacity}" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="25">
                         <Border.Effect>
                             <BlurEffect Radius="75"/>
                         </Border.Effect>
@@ -130,11 +130,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         IsHitTestVisible="False"
-                        Margin="3 0 3 0">
-                        <Image.RenderTransform>
-                            <RotateTransform Angle="0"></RotateTransform>
-                        </Image.RenderTransform>
-                    </Image>
+                        Margin="3 0 3 0"/>
                     
                     <TextBlock FontFamily="Consolas" Margin="0 5 0 0" Text="{x:Static vj0.Core:Globals.VERSION}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
                     
@@ -153,13 +149,13 @@
                     <ToolTip.Tip>
                         <StackPanel Orientation="Vertical" Spacing="3" Margin="5">
                             <TextBlock VerticalAlignment="Center" FontWeight="Medium">Cloud</TextBlock>
-                            <TextBlock VerticalAlignment="Center" Opacity="0.4" MaxWidth="200" FontSize="13">Locally hosted API to interact with CUEParse</TextBlock>
+                            <TextBlock VerticalAlignment="Center" Opacity="0.4" MaxWidth="200" FontSize="13">Locally hosted API to interact with UEParse</TextBlock>
                         </StackPanel>
                     </ToolTip.Tip>
                     
                     <Button.Flyout>
                         <Flyout>
-                            <StackPanel Width="200" Spacing="8">
+                            <StackPanel Spacing="8">
                                 <Button Classes="SoftHoverLift" Click="RestartAPI" Cursor="Hand" HorizontalAlignment="Stretch" Padding="10 0" Height="40" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
                                     <Button.Resources>
                                         <ResourceDictionary>
@@ -181,7 +177,7 @@
                     </Button.Flyout>
                     
                     <Grid Cursor="Hand" Background="Transparent" ClipToBounds="False">
-                        <avalonia:FluentIcon Icon="{Binding APIServiceIcon}" Foreground="{Binding APIServiceStatusColor}"/>
+                        <avalonia:FluentIcon FontSize="21" Icon="{Binding APIServiceIcon}" Foreground="{Binding APIServiceStatusColor}"/>
                     </Grid>
                 </Button>
             </StackPanel>
