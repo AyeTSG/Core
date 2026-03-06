@@ -50,7 +50,7 @@
                      
                      Margin="10 0 10 0"
                      
-                     Classes="NoRoundedBackground"
+                     Classes="NoBackground"
                      
                      IsPaneToggleButtonVisible="False" IsPaneVisible="True"
                      IsBackEnabled="True" IsPaneOpen="True"
