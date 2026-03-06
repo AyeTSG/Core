@@ -1,6 +1,6 @@
 <div align="center">
    <a href="https://github.com/Tectors/Core">
-      <img src="https://github.com/user-attachments/assets/149ad432-c644-4692-b14f-39eb73048a91" width="126" height="126"/>
+      <img src="https://github.com/user-attachments/assets/979a0d46-b44b-4f5c-9b67-75d0d96abb4f" width="989.583333" height="595.833333"/>
    </a>
 </div>
 
