@@ -43,8 +43,8 @@
                        Fill="{DynamicResource ScrollBarBackground}"
                        Stroke="{TemplateBinding BorderBrush}"
                        StrokeThickness="{DynamicResource ScrollBarThumbStrokeThickness}"
-                       RadiusX="5"
-                       RadiusY="5" />
+                       RadiusX="8"
+                       RadiusY="8" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

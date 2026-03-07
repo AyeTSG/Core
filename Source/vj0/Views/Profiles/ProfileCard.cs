@@ -89,7 +89,7 @@ public partial class ProfileCard : UserControl, INotifyPropertyChanged
 
     private void DeleteProfile(object? sender, RoutedEventArgs e)
     {
-        MoreOptionsButton.Flyout?.Hide();
+        /*MoreOptionsButton.Flyout?.Hide();*/
         
         OnDelete?.Invoke(this, EventArgs.Empty);
     }

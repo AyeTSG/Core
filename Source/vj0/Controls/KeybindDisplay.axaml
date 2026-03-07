@@ -22,7 +22,7 @@
                             VerticalAlignment="Center"
                             CornerRadius="5">
                         <TextBlock
-                                   FontWeight="Light"
+                                   FontWeight="Medium"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Text="{Binding}" />
