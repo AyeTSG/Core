@@ -1,0 +1,204 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:controls="clr-namespace:Core.Controls"
+    xmlns:viewModels="clr-namespace:Core.ViewModels"
+    xmlns:framework="clr-namespace:Core.Services.Framework"
+    xmlns:navigation="clr-namespace:Core.Controls.Navigation"
+    xmlns:properties="clr-namespace:Core.Extensions.Animations.Properties"
+    xmlns:Core="clr-namespace:Core"
+    x:Class="Core.Views.HomeView"
+    x:DataType="viewModels:HomeViewModel"
+    mc:Ignorable="d"
+    d:DesignWidth="1500"
+    AttachedToVisualTree="Visual_OnAttachedToVisualTree"
+    d:DesignHeight="800">
+    
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="AnimatingTextBrush" StartPoint="0%,0%" EndPoint="100%,0%">
+            <GradientStop Color="#767676" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </UserControl.Resources>
+
+    <Grid>
+        <navigation:NavigationFrame>
+            <Grid Background="Transparent">
+                <controls:CursorEffectControl/>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" Spacing="30" Margin="0 0 0 0">
+                        <!-- App icon -->
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Height="250" HorizontalAlignment="Center" PointerEntered="InputElement_OnPointerEntered" Source="/Assets/Icon/App.Icon.png" Margin="0 0 0 25"/>
+                            <Image Height="250" HorizontalAlignment="Center" Opacity="0" Name="Logo" IsHitTestVisible="False" Source="/Assets/Icon/App.Icon.png" Margin="0 -70 0 0">
+                                <Image.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Image.RenderTransform>
+                            </Image>
+                        </Grid>
+                        
+                        <!-- Fixed container for tagline text to prevent layout shifts -->
+                        <Border HorizontalAlignment="Center" 
+                                Height="50"
+                                MinWidth="400">
+                            
+                            <TextBlock x:Name="RotatingTaglineText"
+                                       Foreground="{DynamicResource AnimatingTextBrush}"
+                                       FontSize="26"
+                                       HorizontalAlignment="Center"
+                                       
+                                       properties:GradientAnimationService.IsAnimated="True"
+                                       properties:GradientAnimationService.AnimationStartColor="#303030"
+                                       properties:GradientAnimationService.AnimationEndColor="White"
+                                       properties:GradientAnimationService.AnimationDuration="0.5"
+                                       
+                                       VerticalAlignment="Center"
+                                       Opacity="0"
+                                       TextAlignment="Center"/>
+                        </Border>
+                        
+                        <!-- Social buttons -->
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Orientation="Horizontal" Spacing="15" Margin="0 15 0 0">
+                            
+                            <!-- Donate button -->
+                            <Grid>
+                                <Border Margin="-35 0 -35 0" Opacity="0.65" Background="#ff1c68" Width="150" Height="30">
+                                    <Border.Effect>
+                                        <BlurEffect Radius="70"/>
+                                    </Border.Effect>
+                                </Border>
+                                
+                                <Button Click="OpenKoFi" ToolTip.Tip="Support the project and help keep development going ??"
+                                        ClipToBounds="False"
+                                        CornerRadius="15"
+                                        Cursor="Hand" HorizontalAlignment="Stretch" Padding="20 0" Height="43"
+                                        Classes="Glass WhiteOutline RedPressedOutline HoverLift" HorizontalContentAlignment="Center"
+                                        PointerEntered="Donate_OnPointerEntered"
+                                        VerticalContentAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Spacing="16">
+                                        <Grid>
+                                            <Viewbox Width="35" Height="22" Stretch="Uniform">
+                                                <Path Fill="#ff1c68"
+                                                      Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
+                                                <Viewbox.Effect>
+                                                    <DropShadowEffect Color="#e3e3e3" BlurRadius="50"
+                                                                      OffsetX="1" OffsetY="1" Opacity="0.0"/>
+                                                </Viewbox.Effect>
+                                            </Viewbox>
+                                            
+                                            <Viewbox Width="22" Name="HeartScale" Opacity="0" Margin="0 -20 0 0" Height="22" Stretch="Uniform" ZIndex="1" IsHitTestVisible="False">
+                                                <Viewbox.RenderTransform>
+                                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                </Viewbox.RenderTransform>
+                                                
+                                                <Path Fill="#ff1c68"
+                                                      Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
+                                                <Viewbox.Effect>
+                                                    <DropShadowEffect Color="#e3e3e3" BlurRadius="50"
+                                                                      OffsetX="0" OffsetY="0" Opacity="0.0"/>
+                                                </Viewbox.Effect>
+                                            </Viewbox>
+                                        </Grid>
+                                        
+                                        <TextBlock Foreground="White" FontWeight="DemiBold" FontSize="19" ZIndex="-1">Donate</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                            
+                            <!-- Discord button -->
+                            <Button Click="OpenDiscord" Cursor="Hand"
+                                    HorizontalAlignment="Stretch" Height="40" Width="40"
+                                    HorizontalContentAlignment="Center"
+                                    Classes="HoverLift" CornerRadius="25"
+                                    VerticalContentAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <Image Source="/Assets/Brands/Scaled/Discord.20px.png"
+                                           Width="20" IsHitTestVisible="False"/>
+                                </StackPanel>
+                            </Button>
+                            
+                            <!-- GitHub button -->
+                            <Button Click="OpenGitHub" Cursor="Hand"
+                                    HorizontalAlignment="Stretch" Height="40" Width="40"
+                                    HorizontalContentAlignment="Center"
+                                    Classes="HoverLift" CornerRadius="25"
+                                    VerticalContentAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <avalonia:MaterialIcon Width="20" Kind="Github"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                            
+                            <!-- X button -->
+                            <Button Click="OpenXAccount" Cursor="Hand"
+                                    HorizontalAlignment="Stretch" Height="40" Width="40"
+                                    HorizontalContentAlignment="Center"
+                                    Classes="HoverLift" CornerRadius="25"
+                                    VerticalContentAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <Image Source="/Assets/Brands/Scaled/X.25px.png"
+                                           Width="20" IsHitTestVisible="False"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Margin="0 20 0 0"
+                                    Orientation="Horizontal" Spacing="15">
+                            
+                            <!-- Get Started button -->
+                            <Button Click="GetStarted" CornerRadius="25"
+                                    Classes="ContentPrimary PressScale HoverLift"
+                                    Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
+                                    IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=!DoesProfileExist}"
+                                    HorizontalContentAlignment="Center"
+                                    BorderBrush="#232323"
+                                    VerticalContentAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <avalonia:MaterialIcon Width="8" Kind="NavigateNext" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                                    <TextBlock FontWeight="Bold" FontSize="19">Get Started</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            
+                            <Grid IsVisible="{x:Static Core:Globals.IsReadyToExplore}">
+                                <!-- Explore Files button -->
+                                <Button Click="ExploreFiles" CornerRadius="25"
+                                        Classes="White PressScale"
+                                        Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
+                                        IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=IsProfileInitialized}"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Spacing="14">
+                                        <avalonia:MaterialIcon Width="19" Kind="Folder" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock FontWeight="Bold" FontSize="19">Explore Files</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </navigation:NavigationFrame>
+        
+        <Border Margin="0 0 20 0" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="0 0 0 30" VerticalAlignment="Top" Width="120" Height="40"/>
+        <Border Margin="0 0 0 20" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Center" BorderThickness="1 1 1 0" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="30 30 0 0" VerticalAlignment="Bottom" Width="450" Height="40"/>
+        <StackPanel ClipToBounds="False" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 26">
+            <StackPanel x:Name="TipContainer" Orientation="Horizontal" Spacing="10">
+                <avalonia:MaterialIcon Kind="Bulb"  Opacity="0.7"/>
+                <TextBlock x:Name="TipText" Text="" HorizontalAlignment="Center" Opacity="0.8"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

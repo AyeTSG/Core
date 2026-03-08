@@ -1,0 +1,156 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:views="clr-namespace:Core.Views.Settings"
+    xmlns:navigation="clr-namespace:Core.Controls.Navigation"
+    xmlns:Core="clr-namespace:Core"
+    xmlns:profiles="clr-namespace:Core.Controls.Profiles"
+    xmlns:viewModels1="clr-namespace:Core.ViewModels"
+    xmlns:framework="clr-namespace:Core.Services.Framework"
+
+    x:Class="Core.Views.SettingsView"
+    x:DataType="viewModels1:SettingsViewModel"
+    
+    mc:Ignorable="d"
+    d:DesignWidth="1500"
+    d:DesignHeight="600">
+    
+    <UserControl.Styles>
+        <Style Selector="controls|Frame#ContentFrame">
+            <Setter Property="Margin" Value="45,0,0,0"/>
+        </Style>
+        
+        <Style Selector="controls|NavigationView.has-profile controls|Frame#ContentFrame">
+            <Setter Property="Margin" Value="45,30,0,0"/>
+        </Style>
+        
+        <Style Selector="controls|NavigationView /template/ ScrollViewer#MenuItemsScrollViewer">
+            <Setter Property="Margin" Value="0,0,0,2"/>
+        </Style>
+        
+        <Style Selector="controls|NavigationView /template/ controls|ItemsRepeater#MenuItemsHost">
+            <Setter Property="Margin" Value="0,20,0,20"/>
+        </Style>
+        
+        <Style Selector="controls|NavigationView.has-profile /template/ ScrollViewer#MenuItemsScrollViewer">
+            <Setter Property="Margin" Value="0,200,0,2"/>
+        </Style>
+        
+        <Style Selector="navigation|NavigationFrame.has-profile">
+            <Setter Property="Margin" Value="0,200,0,0"/>
+        </Style>
+    </UserControl.Styles>
+    
+    <Grid>
+        <navigation:NavigationFrame DisableMargin="True" Name="PaneBorder" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393"/>
+        
+        <controls:NavigationView FontSize="15" Margin="20 -2 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
+            <controls:NavigationView.MenuItems>
+                <controls:NavigationViewItem Content="Preferences" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
+                    <controls:NavigationViewItem.IconSource>
+                        <fluent:FluentIconSource Icon="Person" IconSize="Size32" IconVariant="Regular"/>
+                    </controls:NavigationViewItem.IconSource>
+                </controls:NavigationViewItem>
+                
+                <controls:NavigationViewItem Content="Updates" Tag="{x:Type views:UpdatesSettingsView}" IsSelected="True">
+                    <controls:NavigationViewItem.IconSource>
+                        <fluent:FluentIconSource Icon="Apps" IconSize="Size32" IconVariant="Regular"/>
+                    </controls:NavigationViewItem.IconSource>
+                </controls:NavigationViewItem>
+
+                <controls:NavigationViewItem Content="Connections" Tag="{x:Type views:ConnectionsSettingsView}">
+                    <controls:NavigationViewItem.IconSource>
+                        <fluent:FluentIconSource Icon="Connected" IconSize="Size32" IconVariant="Regular"/>
+                    </controls:NavigationViewItem.IconSource>
+                </controls:NavigationViewItem>
+                
+                <controls:NavigationViewItemHeader IsVisible="{x:Static Core:Globals.IsReadyToMeshExport}" Content="Exports"/>
+                
+                <controls:NavigationViewItem IsVisible="{x:Static Core:Globals.IsReadyToMeshExport}" Content="Models" Tag="{x:Type views:ModelSettingsView}">
+                    <controls:NavigationViewItem.IconSource>
+                        <fluent:FluentIconSource Icon="Cube" IconSize="Size32" IconVariant="Regular"/>
+                    </controls:NavigationViewItem.IconSource>
+                </controls:NavigationViewItem>
+                
+                <controls:NavigationViewItemHeader Content="Advanced"/>
+                
+                <controls:NavigationViewItem Content="Serialization" Tag="{x:Type views:SerializationSettingsView}">
+                    <controls:NavigationViewItem.IconSource>
+                        <fluent:FluentIconSource Icon="CodeTextEdit" IconSize="Size32" IconVariant="Regular"/>
+                    </controls:NavigationViewItem.IconSource>
+                </controls:NavigationViewItem>
+                
+                <controls:NavigationViewItem Content="Cloud" Tag="{x:Type views:CloudSettingsView}">
+                    <controls:NavigationViewItem.IconSource>
+                        <fluent:FluentIconSource Icon="Cloud" IconSize="Size32" IconVariant="Regular"/>
+                    </controls:NavigationViewItem.IconSource>
+                </controls:NavigationViewItem>
+                
+                <controls:NavigationViewItemHeader Content="Dev Tools"/>
+                
+                <controls:NavigationViewItem Content="Debug" Tag="{x:Type views:DebugSettingsView}">
+                    <controls:NavigationViewItem.IconSource>
+                        <fluent:FluentIconSource Icon="Beaker" IconSize="Size32" IconVariant="Regular"/>
+                    </controls:NavigationViewItem.IconSource>
+                </controls:NavigationViewItem>
+            </controls:NavigationView.MenuItems>
+            
+            <controls:Frame x:Name="ContentFrame"/>
+        </controls:NavigationView>
+        
+        <Button HorizontalAlignment="Left"
+                Name="EditProfileButton"
+                VerticalAlignment="Top"
+                Classes="Glass GlassDarkerInteraction HoverLift"
+                CornerRadius="20"
+                Width="393"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch"
+                Margin="0 32 0 0"
+                Click="EditProfile"
+                IsVisible="False"
+                Focusable="False"
+                IsDefault="False"
+                ClipToBounds="False"
+                Height="144">
+            
+            <Grid Background="Transparent">
+                <Grid Opacity="1" IsVisible="True" HorizontalAlignment="Left">
+                    <Border
+                        Opacity="{Binding Source={x:Static framework:AppServices.MainWM}, Path=TitleBarOpacity}"
+                        Background="{Binding Source={x:Static framework:AppServices.MainWM}, Path=CurrentProfile.Display.GradientBrush}"
+                        Height="60"
+                        Width="70"
+                        Margin="25 25 0 140">
+                        <Border.Effect>
+                            <BlurEffect Radius="50"/>
+                        </Border.Effect>
+                    </Border>
+                </Grid>
+                
+                <Grid DataContext="{Binding CurrentProfile}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <profiles:ProfileSplashControl
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        IgnoreLoading="True"
+                        Radius="35"
+                        Margin="15 -28 0 0"
+                        SplashScale="3"/>
+                </Grid>
+                
+                <TextBlock Margin="15 78 0 0" HorizontalAlignment="Left" FontSize="35" FontWeight="DemiBold" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" MaxWidth="270" Text="{Binding CurrentProfile.Name}"></TextBlock>
+                
+                <fluent:FluentIcon
+                    Icon="PersonEdit"
+                    HorizontalAlignment="Right"
+                    IconSize="Size32"
+                    Margin="0 0 25 0" FontSize="35"
+                    IconVariant="Regular"/>
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

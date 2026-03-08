@@ -80,5 +80,6 @@ _[Ss]cripts
 /.vs
 *.psd
 /Published
-Source/vj0/Assets/TestScreenshot.png
+Source/Core/Assets/TestScreenshot.png
 /Release
+

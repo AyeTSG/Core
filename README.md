@@ -53,7 +53,7 @@ git clone https://github.com/Tectors/Core --recursive
 ```
 #### Build
 ```
-dotnet publish Source/vj0 -c Release --no-self-contained -r win-x64 -o "./Release" -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false -p:IncludeNativeLibrariesForSelfExtract=true
+dotnet publish Source/Core -c Release --no-self-contained -r win-x64 -o "./Release" -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false -p:IncludeNativeLibrariesForSelfExtract=true
 ```
 #### Update Libraries
 ```
@@ -63,3 +63,4 @@ Dependencies\update_libraries.bat
 ```
 python .github/Licensing/main.py
 ```
+
