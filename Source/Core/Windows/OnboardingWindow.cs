@@ -45,22 +45,27 @@ public partial class OnboardingWindow : WindowBase<OnboardingWindowModel>
 
         if (type == typeof(MainWindow))
         {
-            var app = (AppInstance)Avalonia.Application.Current!;
-            
-            if (app.savedWindow.GetType() != typeof(MainWindow))
-            {
-                app.SpawnWindow(new MainWindow());
-            }
-
-            Close();
-        
-            Settings.Application.CompletedOnboarding = true;
-            Settings.Save();
+            CompleteOnboarding();
             
             return;
         }
         
         Navigation.Onboarding.Open(type);
+    }
+
+    private void CompleteOnboarding()
+    {
+        Settings.Application.CompletedOnboarding = true;
+        Settings.Save();
+        
+        var app = (AppInstance)Avalonia.Application.Current!;
+            
+        if (app.savedWindow.GetType() != typeof(MainWindow))
+        {
+            app.SpawnWindow(new MainWindow());
+        }
+
+        Close();
     }
         
     private void OpenDonateLink(object? sender, RoutedEventArgs e)
@@ -71,5 +76,10 @@ public partial class OnboardingWindow : WindowBase<OnboardingWindowModel>
     private void OpenDiscordLink(object? sender, RoutedEventArgs e)
     {
         AppService.OpenLink(DISCORD_LINK);
+    }
+
+    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    {
+        CompleteOnboarding();
     }
 }

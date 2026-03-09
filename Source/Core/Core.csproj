@@ -146,23 +146,8 @@
     <Compile Update="Views\Onboarding\OnboardingWelcomeView.cs">
       <DependentUpon>OnboardingWelcomeView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Onboarding\OnboardingTermsView.cs">
-      <DependentUpon>OnboardingTermsView.axaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\Onboarding\OnboardingPreferencesView.cs">
       <DependentUpon>OnboardingPreferencesView.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\OnboardingTerms\OnboardingTermsCloudView.cs">
-      <DependentUpon>OnboardingTermsCloudView.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\OnboardingTerms\OnboardingTermsProfilesView.cs">
-      <DependentUpon>OnboardingTermsProfilesView.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\OnboardingTerms\OnboardingTermsMappingsView.cs">
-      <DependentUpon>OnboardingTermsMappingsView.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\OnboardingTerms\OnboardingTermsEncryptionView.cs">
-      <DependentUpon>OnboardingTermsEncryptionView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Profile\ProfileCard.cs">
       <DependentUpon>ProfileCard.axaml</DependentUpon>

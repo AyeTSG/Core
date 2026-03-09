@@ -8,40 +8,33 @@
     x:Class="Core.Views.Onboarding.OnboardingWelcomeView"
     
     mc:Ignorable="d"
-    d:DesignWidth="950"
-    d:DesignHeight="570">
+    d:DesignWidth="1250"
+    d:DesignHeight="700">
     
     <Grid>
-        <StackPanel VerticalAlignment="Center" Spacing="15">
-            <Grid>
-                <Image Source="/Assets/Icon/App.Icon.png"
-                       Width="250"
-                       IsHitTestVisible="False" Margin="0 0 0 50"/>
-                <Image Source="/Assets/Icon/App.Icon.png" Name="Logo"
-                       Width="250" PointerEntered="InputElement_OnPointerEntered"
-                       Margin="0 -20 0 50" Opacity="0.0">
-                    <Image.RenderTransform>
-                        <ScaleTransform ScaleX="1" ScaleY="1"/>
-                    </Image.RenderTransform>
-                </Image>
+        <StackPanel VerticalAlignment="Center" Spacing="15" Margin="0 0 0 -30">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Height="85" HorizontalAlignment="Center"
+                       Source="/Assets/Icon/App.Icon.png" Margin="0 0 0 40"/>
             </Grid>
             
-            <TextBlock LineSpacing="0" LetterSpacing="-1" HorizontalAlignment="Center" FontSize="45" Foreground="#f5f5f5">
-                Welcome
+            <TextBlock LineSpacing="0" FontWeight="Bold" LetterSpacing="-1" HorizontalAlignment="Center" FontSize="100" Foreground="#f5f5f5">
+                Welcome.
             </TextBlock>
 
             <Button
-                Classes="ContentSecondary HoverLift"
-                Height="50"
+                Classes="GlassWhite HoverLift"
                 Margin="0 50 0 0"
                 Click="OnStartClicked"
                 Cursor="Hand"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Center"
+                Padding="25 15"
                 ClipToBounds="True"
-                IsDefault="True"
-                Width="150">
+                FontWeight="SemiBold"
+                CornerRadius="5"
+                IsDefault="True">
                 
                 <StackPanel Orientation="Horizontal" Spacing="6">
                     <TextBlock Margin="0 1 0 0" Text="Get Started" FontSize="20" HorizontalAlignment="Center"/>

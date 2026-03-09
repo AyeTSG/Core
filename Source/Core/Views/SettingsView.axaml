@@ -90,9 +90,9 @@
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
-                <controls:NavigationViewItemHeader Content="Dev Tools"/>
+                <controls:NavigationViewItemHeader IsVisible="{Binding !IsOnboarding}" Content="Dev Tools"/>
                 
-                <controls:NavigationViewItem Content="Debug" Tag="{x:Type views:DebugSettingsView}">
+                <controls:NavigationViewItem IsVisible="{Binding !IsOnboarding}" Content="Debug" Tag="{x:Type views:DebugSettingsView}">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Beaker" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>
@@ -105,8 +105,8 @@
         <Button HorizontalAlignment="Left"
                 Name="EditProfileButton"
                 VerticalAlignment="Top"
-                Classes="Glass GlassDarkerInteraction HoverLift"
-                CornerRadius="20"
+                Classes="GlassWhite GlassDarkerInteraction HoverLift"
+                CornerRadius="5"
                 Width="393"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"

@@ -166,9 +166,7 @@
                                     BorderBrush="#232323"
                                     VerticalContentAlignment="Center">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <avalonia:MaterialIcon Width="8" Kind="NavigateNext" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
-                                    <TextBlock FontWeight="Bold" FontSize="19">Get Started</TextBlock>
+                                    <TextBlock FontWeight="Bold" FontSize="19">Start a Profile</TextBlock>
                                 </StackPanel>
                             </Button>
                             

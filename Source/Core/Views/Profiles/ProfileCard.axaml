@@ -31,7 +31,7 @@
         </Grid.RenderTransform>
         
         <!-- Card -->
-        <Border
+        <Border 
             CornerRadius="25"
             x:Name="ProfileCardBackground"
             Background="#B3131314"
@@ -44,7 +44,7 @@
             MinWidth="400"
             Height="225">
             
-            <Grid>
+            <Grid Background="Transparent">
                 <!-- Glow Brush when Profile is loading -->
                 <Border
                   Opacity="{Binding Source={x:Static framework:AppServices.MainWM}, Path=TitleBarOpacity}"

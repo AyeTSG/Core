@@ -8,12 +8,12 @@
     x:Class="Core.Views.Onboarding.OnboardingPreferencesView"
     
     mc:Ignorable="d"
-    d:DesignWidth="950"
+    d:DesignWidth="1250"
     d:DesignHeight="700">
     
-    <Grid Margin="5 0 0 0">
-        <StackPanel VerticalAlignment="Center" Spacing="35">
-            <TextBlock LetterSpacing="-1" HorizontalAlignment="Center" FontSize="33" FontWeight="SemiBold" Foreground="White">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" Spacing="35" Margin="0 30 0 0">
+            <TextBlock LetterSpacing="-1" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="White">
                 <TextBlock.Effect>
                     <DropShadowEffect
                         Color="#e3e3e3"
@@ -24,24 +24,24 @@
                 Adjust Your Preferences
             </TextBlock>
         
-            <views:SettingsView Width="1100" Height="500" IsOnboarding="True"/>
+            <views:SettingsView Width="1000" Height="430" IsOnboarding="True"/>
             
             <Button
-                Classes="ContentSecondary HoverLift"
-                Height="60"
-                Name="ContinueButton"
-                Margin="0 50 0 0"
+                Classes="GlassWhite HoverLift"
                 Click="Save"
                 Cursor="Hand"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Center"
+                Padding="150 15"
                 ClipToBounds="True"
-                IsDefault="True"
-                Width="200">
+                Margin="0 -15 0 0"
+                FontWeight="SemiBold"
+                CornerRadius="5"
+                IsDefault="True">
                 
                 <StackPanel Orientation="Horizontal" Spacing="6">
-                    <TextBlock Margin="0 1 0 0" Text="Save" FontSize="25" HorizontalAlignment="Center"/>
+                    <TextBlock Margin="0 1 0 0" Text="Save" FontSize="20" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
         </StackPanel>

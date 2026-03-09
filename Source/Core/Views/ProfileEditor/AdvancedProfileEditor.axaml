@@ -25,7 +25,7 @@
             <StackPanel Margin="35" Spacing="22">
                 <!-- Override Mappings -->
                 <StackPanel Orientation="Vertical" Spacing="10">
-                    <Border Background="{DynamicResource ExpanderHeaderBackground}" BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}" BorderThickness="1" CornerRadius="20">
+                    <Border Background="{DynamicResource ExpanderHeaderBackground}" BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}" BorderThickness="1" CornerRadius="5">
                         <Grid Margin="28">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">

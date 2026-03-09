@@ -14,7 +14,6 @@ public partial class OnboardingWindowModel : WindowModelBase
     private List<Type> PageTypes { get; } =
     [
         typeof(OnboardingWelcomeView),
-        typeof(OnboardingTermsView),
         typeof(OnboardingPreferencesView),
         typeof(MainWindow),
     ];

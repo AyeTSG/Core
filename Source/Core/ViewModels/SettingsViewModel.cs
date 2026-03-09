@@ -9,4 +9,7 @@ public partial class SettingsViewModel : ViewModelBase
 {
     [ObservableProperty]
     private Profile? currentProfile = new();
+    
+    [ObservableProperty]
+    private bool isOnboarding;
 }

@@ -27,7 +27,7 @@ public partial class OnboardingWelcomeView : UserControl
     {
         if (IsLogoAnimationPlaying) return;
         
-        if (Logo?.RenderTransform is not ScaleTransform Transform)
+        /*if (Logo?.RenderTransform is not ScaleTransform Transform)
         {
             return;
         }
@@ -68,7 +68,7 @@ public partial class OnboardingWelcomeView : UserControl
         
         Logo.Opacity = 0.0;
         
-        IsLogoAnimationPlaying = false;
+        IsLogoAnimationPlaying = false;*/
     }
 
     private void InputElement_OnPointerEntered(object? sender, PointerEventArgs e)
