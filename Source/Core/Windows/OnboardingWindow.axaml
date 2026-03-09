@@ -43,18 +43,25 @@
         <!-- Title Bar -->
         <Grid>
             <!-- Arrow Navigation -->
-            <StackPanel Margin="17 20 0 0" Orientation="Horizontal">
+            <StackPanel Margin="20 20 0 0" Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal" IsVisible="{Binding CanGoBack}">
                     <Button Background="Transparent" Foreground="#adadad" Click="Back">
                         <fluent:FluentIcon Icon="ArrowLeft" IconSize="Size12"/>
                     </Button>
                 </StackPanel>
                 
-                <TextBlock IsHitTestVisible="False" Text="{x:Static Core.Resources:Globals.VERSION}" Margin="10 5 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
+                <StackPanel Orientation="Horizontal" IsVisible="{Binding !CanGoBack}">
+                    <!-- App icon -->
+                    <Grid Margin="10 -7 0 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Height="20" Opacity="0.15" HorizontalAlignment="Center" Source="/Assets/Icon/App.Icon.png"/>
+                    </Grid>
+                    
+                    <TextBlock IsHitTestVisible="False" Text="{x:Static Core.Resources:Globals.VERSION}" Margin="10 5 7 8" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
+                </StackPanel>
             </StackPanel>
 
             <StackPanel Background="Transparent" Margin="0" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="0">
-                <Button Classes="Empty" Cursor="Hand" Opacity="0.15" Click="Button_OnClick">
+                <Button Classes="Empty" Cursor="Hand" Opacity="0.15" Click="Button_OnClick" IsVisible="False">
                     <TextBlock>Skip →</TextBlock>
                 </Button>
                 <CaptionButtons Margin="4 0 0 0" x:Name="captionButtons" Background="Transparent"/>
@@ -82,6 +89,7 @@
                 
                 PaneDisplayMode="LeftCompact"
                 Classes="NoBackground"
+                Transitions=""
                 CompactPaneLength="0">
 
                 <controls:Frame Margin="0 -20 0 0" x:Name="ContentFrame"/>

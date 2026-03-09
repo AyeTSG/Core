@@ -7,6 +7,7 @@ using Avalonia.LogicalTree;
 using FluentAvalonia.UI.Controls;
 
 using Core.Framework;
+using FluentAvalonia.UI.Media.Animation;
 
 namespace Core.Services;
 
@@ -24,6 +25,7 @@ public class NavigatorContext
     private NavigationView? _navigationView;
     private Frame _contentFrame = null!;
     private readonly Dictionary<Type, Func<object, Type?>> _typeResolvers = new();
+    public bool ForceSnappyTransition = false;
 
     public void Initialize(NavigationView navigationView)
     {
@@ -67,7 +69,8 @@ public class NavigatorContext
         
         OnNavigate?.Invoke(viewType);
 
-        _contentFrame.Navigate(viewType, null, Settings.Application.Transition);
+        _contentFrame.Navigate(viewType, null, 
+            ForceSnappyTransition ? new SuppressNavigationTransitionInfo() : Settings.Application.Transition);
         _contentFrame.Focus();
 
         if (_navigationView is not null)

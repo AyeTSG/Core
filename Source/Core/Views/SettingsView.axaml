@@ -46,6 +46,20 @@
     </UserControl.Styles>
     
     <Grid>
+        <!-- Background blur effect -->
+        <Border Width="250" Height="300" Margin="250 200 0 0" Opacity="0.15"
+                IsVisible="{Binding !IsOnboarding}"
+                HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="White" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Effect>
+                <BlurEffect Radius="450"/>
+            </Border.Effect>
+        </Border>
+        
         <navigation:NavigationFrame DisableMargin="True" Name="PaneBorder" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393"/>
         
         <controls:NavigationView FontSize="15" Margin="20 -2 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
@@ -56,7 +70,7 @@
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
-                <controls:NavigationViewItem Content="Updates" Tag="{x:Type views:UpdatesSettingsView}" IsSelected="True">
+                <controls:NavigationViewItem Content="Updates" IsVisible="False" Tag="{x:Type views:UpdatesSettingsView}" IsSelected="True">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Apps" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>
@@ -76,15 +90,15 @@
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
-                <controls:NavigationViewItemHeader Content="Advanced"/>
+                <controls:NavigationViewItemHeader IsVisible="{Binding !IsOnboarding}" Content="Advanced"/>
                 
-                <controls:NavigationViewItem Content="Serialization" Tag="{x:Type views:SerializationSettingsView}">
+                <controls:NavigationViewItem IsVisible="{Binding !IsOnboarding}" Content="Serialization" Tag="{x:Type views:SerializationSettingsView}">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="CodeTextEdit" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
-                <controls:NavigationViewItem Content="Cloud" Tag="{x:Type views:CloudSettingsView}">
+                <controls:NavigationViewItem IsVisible="{Binding !IsOnboarding}" Content="Cloud" Tag="{x:Type views:CloudSettingsView}">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Cloud" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>

@@ -19,8 +19,15 @@ public partial class HomeView : ViewBase<HomeViewModel>
     {
         InitializeComponent();
         
+        MainWM.PropertyChanged += (_, args) =>
+        {
+            if (args.PropertyName == nameof(MainWM.CurrentProfile))
+            {
+                UpdatePrompt();
+            }
+        };
+        
         ViewModel.StartRotation(ViewModel.TagLines, 2700, RotatingTaglineText, useRandom: true);
-        ViewModel.StartRotation(ViewModel.Tips, 2000, TipText, TipContainer, true);
     }
 
     private void OpenDiscord(object? sender, RoutedEventArgs e)
@@ -166,6 +173,21 @@ public partial class HomeView : ViewBase<HomeViewModel>
         if (_random.NextDouble() <= 0.1)
         {
             PlayLogoAnimation();
+        }
+    }
+
+    private void UpdatePrompt()
+    {
+        TagLineContainer.IsVisible = MainWM.CurrentProfile is not null;
+        ButtonContainer.IsVisible = MainWM.CurrentProfile is null;
+
+        if (MainWM.CurrentProfile is not null)
+        {
+            Prompt.Text = "You're all set.";
+        }
+        else
+        {
+            Prompt.Text = "Start a Profile.";
         }
     }
 

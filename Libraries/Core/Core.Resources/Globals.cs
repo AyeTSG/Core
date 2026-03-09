@@ -8,7 +8,7 @@ namespace Core.Resources;
 public static class Globals
 {
     /* Format: 0.0.0.0 */
-    public const string VERSION = "0.0.4.8";
+    public const string VERSION = "0.0.4.9";
     public const string COMMIT = "";
     
     public static bool IS_COMMIT_AVAILABLE => !string.IsNullOrEmpty(COMMIT);

@@ -22,25 +22,42 @@ public class PluginService : IService
         RegisterPlugins();
     }
 
+    private readonly List<Assembly> PluginAssemblies = [];
+    
     private void LoadAssemblies()
     {
         try
         {
             string pluginsPath = Path.Combine(AppContext.BaseDirectory, "Plugins");
 
-            if (Directory.Exists(pluginsPath))
+            if (!Directory.Exists(pluginsPath))
+                return;
+
+            var loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(a => a.GetName().Name?.StartsWith("Core.Plugins.") == true)
+                .ToDictionary(a => a.GetName().Name!, StringComparer.OrdinalIgnoreCase);
+
+            foreach (var pluginFile in Directory.GetFiles(pluginsPath, "Core.Plugins.*.dll"))
             {
-                foreach (var pluginFile in Directory.GetFiles(pluginsPath, "Core.Plugins.*.dll"))
+                try
                 {
-                    try
+                    string assemblyName = Path.GetFileNameWithoutExtension(pluginFile);
+
+                    if (loadedAssemblies.ContainsKey(assemblyName))
                     {
-                        Assembly.LoadFrom(pluginFile);
-                        Log.Information($"Loaded plugin assembly: {Path.GetFileName(pluginFile)}");
+                        PluginAssemblies.Add(loadedAssemblies[assemblyName]);
+                        Log.Information($"Using already loaded plugin assembly: {assemblyName}");
+                        continue;
                     }
-                    catch (Exception innerEx)
-                    {
-                        Log.Warning($"Failed to load plugin assembly {pluginFile}: {innerEx.Message}");
-                    }
+
+                    var assembly = Assembly.LoadFrom(pluginFile);
+                    PluginAssemblies.Add(assembly);
+
+                    Log.Information($"Loaded plugin assembly: {assemblyName}");
+                }
+                catch (Exception ex)
+                {
+                    Log.Warning($"Failed to load plugin assembly {pluginFile}: {ex.Message}");
                 }
             }
         }
@@ -52,43 +69,28 @@ public class PluginService : IService
 
     private void RegisterPlugins()
     {
-        try
+        foreach (var assembly in PluginAssemblies)
         {
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            
-            foreach (var assembly in assemblies)
+            try
             {
-                if (!assembly.GetName().Name?.StartsWith("Core.Plugins.") == true)
-                {
-                    continue;
-                }
-                
-                try
-                {
-                    var types = assembly.GetTypes()
-                        .Where(t => typeof(IPlugin).IsAssignableFrom(t) && 
-                                    !t.IsAbstract && 
-                                    !t.IsInterface &&
-                                    t.GetConstructor(Type.EmptyTypes) != null);
+                var types = assembly.GetTypes()
+                    .Where(t => typeof(IPlugin).IsAssignableFrom(t) &&
+                                !t.IsAbstract &&
+                                !t.IsInterface &&
+                                t.GetConstructor(Type.EmptyTypes) != null);
 
-                    foreach (var Plugin in types.Select(type => (IPlugin)Activator.CreateInstance(type)!))
-                    {
-                        RegisterPlugin(Plugin);
-                        
-                        Log.Information($"Registered plugin: {Plugin.Name}");
-                    }
-                }
-                catch (Exception ex)
+                foreach (var plugin in types.Select(t => (IPlugin)Activator.CreateInstance(t)!))
                 {
-                    Log.Warning($"Failed to scan assembly {assembly.GetName().Name}: {ex.Message}");
+                    RegisterPlugin(plugin);
+                    Log.Information($"Registered plugin: {plugin.Name}");
                 }
             }
+            catch (Exception ex)
+            {
+                Log.Warning($"Failed to scan assembly {assembly.GetName().Name}: {ex.Message}");
+            }
         }
-        catch (Exception ex)
-        {
-            Log.Warning($"Failed to discover plugins: {ex.Message}");
-        }
-        
+
         Log.Information($"Registered {List.Count} plugins");
     }
     

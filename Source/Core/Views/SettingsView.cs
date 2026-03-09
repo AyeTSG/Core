@@ -28,9 +28,7 @@ public partial class SettingsView : ViewBase<SettingsViewModel>
     public SettingsView(): base(SettingsVM)
     {
         InitializeComponent();
-
-        SettingsVM.IsOnboarding = IsOnboarding;
-
+        
         AttachedToVisualTree += (_, _) =>
         {
             if (HasInitialized) return;
