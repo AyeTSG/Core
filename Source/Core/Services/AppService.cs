@@ -120,7 +120,7 @@ public class AppService : IService
             return;
         }
         
-        Log.Information($"Updating Window Jump List");
+        Log.Information($"Updating Recent Jump List");
 
         var jumpList = JumpList.CreateJumpList();
         var exePath = Environment.ProcessPath;
@@ -141,5 +141,7 @@ public class AppService : IService
         
         jumpList.AddCustomCategories(recentCategory);
         jumpList.Refresh();
+        
+        Log.Information($"Updated Recent Jump List");
     }
 }
