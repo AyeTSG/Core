@@ -12,12 +12,12 @@ public class APIBase
 
     private readonly RestClient _client;
 
-    protected APIBase(RestClient client)
+    public APIBase(RestClient client)
     {
         _client = client;
     }
     
-    protected APIBase(RestClient client, string baseUrl)
+    public APIBase(RestClient client, string baseUrl)
     {
         _client = client;
         BaseURL = baseUrl;
@@ -91,5 +91,20 @@ public class APIBase
 
         await File.WriteAllBytesAsync(outPath, data);
         return new FileInfo(outPath);
+    }
+    
+    public async Task<FileInfo?> DownloadFileAsync(string url, string destination)
+    {
+        var request = new RestRequest(url);
+        var data = await _client.DownloadDataAsync(request);
+        if (data is null)
+        {
+            return null;
+        }
+
+        Directory.CreateDirectory(Path.GetDirectoryName(destination)!);
+        
+        await File.WriteAllBytesAsync(destination, data);
+        return new FileInfo(destination);
     }
 }

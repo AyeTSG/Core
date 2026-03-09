@@ -39,6 +39,9 @@ using Core.Resources.Framework.CUEParse;
 using Core.Plugins.OnDemand;
 using Core.Resources.Migration;
 using Core.Windows;
+using CUE4Parse.FileProvider;
+using CUE4Parse.UE4.IO;
+using CUE4Parse.Utils;
 
 namespace Core.Models.Profiles;
 
@@ -122,16 +125,7 @@ public class Profile : BaseProfileDisplay
         
         ExplorerVM.Reset();
         ScopeVM.Reset();
-
-        if (TexturesOnDemand) {
-            var onDemandPlugin = Plugins.OfType<IOnDemandPlugin>().FirstOrDefault();
-
-            if (onDemandPlugin != null)
-            {
-                onDemandPlugin.PreInitialize();
-            }
-        }
-
+        
         CheckStatusNotifies();
         
         if (cancellationToken.IsCancellationRequested)
@@ -160,14 +154,14 @@ public class Profile : BaseProfileDisplay
             return;
         }
         
-        await InitializeTextureStreaming();
         InitializeCache();
 
         if (cancellationToken.IsCancellationRequested)
         {
             return;
         }
-        
+
+        await InitializeTextureStreaming();
         await LoadKeys(cancellationToken);
         
         if (Provider is not null && Provider.Files.Count == 0 && Encryption.MainKey == EMPTY_CHAR && Provider.Keys.Count == 0)
@@ -233,6 +227,16 @@ public class Profile : BaseProfileDisplay
             ? $"Failed to load language \"{language.GetDescription()}\""
             : $"Changed profile's provider language to \"{language.GetDescription()}\"");
     }
+    
+    private async Task InitializeTextureStreaming()
+    {
+        var onDemandPlugin = Plugins.OfType<IOnDemandPlugin>().FirstOrDefault();
+
+        if (onDemandPlugin != null)
+        {
+            await onDemandPlugin.InitializeStreaming(this);
+        }
+    }
 
     public void InitializeCache(bool shouldSave = true)
     {
@@ -282,11 +286,23 @@ public class Profile : BaseProfileDisplay
     
     public void UpdateStatus(string status) => MainWM.UpdateStatus(status);
     
-    private Task InitializeProvider()
+    private async Task InitializeProvider()
     {
         if (ArchiveDirectory.Length != 0)
         {
             Provider = new BaseProvider(ArchiveDirectory, new VersionContainer(Version, TexturePlatform));
+        }
+        
+        var onDemandPlugin = Plugins.OfType<IOnDemandPlugin>().FirstOrDefault();
+
+        if (onDemandPlugin != null)
+        {
+            await onDemandPlugin.PreInitialize(this);
+        }
+        
+        if (onDemandPlugin != null)
+        {
+            await onDemandPlugin.SetupProvider(this);
         }
 
         if (!Encryption.IsValid) Encryption.MainKey = EMPTY_CHAR;
@@ -318,10 +334,17 @@ public class Profile : BaseProfileDisplay
         Provider.ReadScriptData = Settings.Serialization.ReadBlueprintBytecode;
         Provider.ReadShaderMaps = Settings.Serialization.ReadMaterialShaderMaps;
         Provider.ReadNaniteData = true;
-        
-        Provider.Initialize();
 
-        return Task.CompletedTask;
+        if (onDemandPlugin != null)
+        {
+            await onDemandPlugin.Initialize(this);
+        }
+        else
+        {
+            Provider.Initialize();
+        }
+
+        return;
     }
     
     private async Task LoadKeys(CancellationToken cancellationToken = default)
@@ -365,7 +388,7 @@ public class Profile : BaseProfileDisplay
         MappingsResponse? mapping = null;
         try
         {
-            mapping = await Core.API.UEDB.Globals.API.FetchMappingAsync(token: cancellationToken);
+            mapping = await API.UEDB.Globals.API.FetchMappingAsync(token: cancellationToken);
         }
         catch (Exception ex)
         {
@@ -401,12 +424,12 @@ public class Profile : BaseProfileDisplay
     
     private static string? GetLocallyRecentCreatedMappings()
     {
-        if (!MappingsFolder.Exists)
+        if (!UEDBMappingsFolder.Exists)
         {
             return null;
         }
         
-        var usmapFiles = MappingsFolder.GetFiles("*.usmap");
+        var usmapFiles = UEDBMappingsFolder.GetFiles("*.usmap");
         return usmapFiles.Length <= 0 ? null : usmapFiles.MaxBy(x => x.CreationTime)?.FullName;
     }
     
@@ -578,7 +601,7 @@ public class Profile : BaseProfileDisplay
             IsInitialized = false;
         }
     }
-    
+
     public static async Task<List<Profile>> LoadAllAsync()
     {
         Directory.CreateDirectory(ProfilesFolder.ToString());
@@ -711,34 +734,6 @@ public class Profile : BaseProfileDisplay
         var snapped = baseGames.OrderBy(v => Math.Abs(v - lerped)).First();
 
         return (EGame)snapped;
-    }
-    
-    private Task InitializeTextureStreaming()
-    {
-        if (!TexturesOnDemand) return Task.CompletedTask;
-        
-        var onDemandPlugin = Plugins.OfType<IOnDemandPlugin>().FirstOrDefault();
-        onDemandPlugin?.Initialize(this);
-        
-        return Task.CompletedTask;
-    }
-    
-    private async Task<string> GetTocPath()
-    {
-        var onDemandPath = Path.Combine(ArchiveDirectory, @"..\..\..\Cloud\IoStoreOnDemand.ini");
-        if (!File.Exists(onDemandPath)) return string.Empty;
-
-        var onDemandText = await File.ReadAllTextAsync(onDemandPath);
-        if (string.IsNullOrWhiteSpace(onDemandText)) return string.Empty;
-
-        var onDemandIni = new ConfigIni();
-        onDemandIni.Read(new StringReader(onDemandText));
-
-        return onDemandIni
-            .Sections.FirstOrDefault(s => s.Name == "Endpoint")?
-            .Tokens.OfType<InstructionToken>()
-            .FirstOrDefault(t => t.Key == "TocPath")?
-            .Value.Replace("\"", "") ?? string.Empty;
     }
     
     public void Validate()

@@ -1,8 +1,6 @@
 using System.Text.RegularExpressions;
 
 using Serilog;
-using Core.API.Models.GitHub;
-using Core.API.Models.GitHub.Responses;
 using Core.Plugins.Interfaces;
 using Core.Plugins.Resolvers;
 using Core.Resources.Extensions;
@@ -110,7 +108,7 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
                     continue;
                 }
                 
-                var targetFolder = Path.Combine(Resources.Globals.MappingsFolder.FullName, Profile.Name);
+                var targetFolder = Path.Combine(Resources.Globals.MappingsFolder.FullName, ".github", Profile.Name);
                 
                 var downloaded = await Globals.API.DownloadFileAsync(Release.DownloadURL, new DirectoryInfo(targetFolder));
                 if (downloaded is null) continue;

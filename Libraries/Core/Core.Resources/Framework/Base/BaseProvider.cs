@@ -9,8 +9,8 @@ namespace Core.Resources.Framework.Base;
 
 public class BaseProvider : AbstractVfsFileProvider
 {
-    private readonly DirectoryInfo WorkingDirectory;
-    private static readonly EnumerationOptions EnumerationOptions = new()
+    protected readonly DirectoryInfo WorkingDirectory;
+    protected static readonly EnumerationOptions EnumerationOptions = new()
     {
         RecurseSubdirectories = true,
         IgnoreInaccessible = true

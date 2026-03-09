@@ -38,19 +38,6 @@ public static class Globals
     public const string X_LINK = "https://x.com/t3ctor";
     public const string DONATE_LINK = "https://ko-fi.com/t4ctor";
     
-    /* Application Folders */
-    public static readonly string ApplicationDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-    private static readonly string DataFolder = Path.Combine(ApplicationDataFolder, CODENAME);
-    
-    public static readonly DirectoryInfo ProfilesFolder = new(Path.Combine(DataFolder, "Profiles"));
-    public static readonly DirectoryInfo InstallationFolder = new(Path.Combine(DataFolder, "Installation"));
-    public static readonly DirectoryInfo RuntimeFolder = new(Path.Combine(DataFolder, "Runtime"));
-    public static readonly DirectoryInfo OnDemandFolder = new(Path.Combine(RuntimeFolder.ToString(), "Demand"));
-    public static readonly DirectoryInfo MappingsFolder = new(Path.Combine(RuntimeFolder.ToString(), "Mappings"));
-    public static readonly DirectoryInfo LogsFolder = new(Path.Combine(RuntimeFolder.ToString(), "Logs"));
-    private static readonly DirectoryInfo ExportFolder = new(Path.Combine(RuntimeFolder.ToString(), "Export"));
-    public static readonly DirectoryInfo AudioFilesFolder = new(Path.Combine(ExportFolder.ToString(), "Audio"));
-    
     /* Other Constants */
     public static readonly FGuid ZERO_GUID = new();
     public const string EMPTY_CHAR = "0x0000000000000000000000000000000000000000000000000000000000000000";
@@ -60,4 +47,37 @@ public static class Globals
 #else
         false;
 #endif
+    
+    /* Application Folders */
+    public static readonly string ApplicationDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+    private static readonly string DataFolder = Path.Combine(ApplicationDataFolder, CODENAME);
+    
+    public static readonly DirectoryInfo ProfilesFolder = new(Path.Combine(DataFolder, ".profiles"));
+    public static readonly DirectoryInfo InstallationFolder = new(Path.Combine(DataFolder, ".installations"));
+    public static readonly DirectoryInfo RuntimeFolder = new(Path.Combine(DataFolder, ".runtime"));
+    public static readonly DirectoryInfo ProfileInstallationFolder = new(Path.Combine(DataFolder, ".installation"));
+    public static readonly DirectoryInfo OnDemandFolder = new(Path.Combine(RuntimeFolder.ToString(), ".on.demand"));
+    public static readonly DirectoryInfo OnDemandChunksFolder = new(Path.Combine(OnDemandFolder.ToString(), ".chunks"));
+    public static readonly DirectoryInfo OnDemandManifestFolder = new(Path.Combine(OnDemandFolder.ToString(), ".manifests"));
+    public static readonly DirectoryInfo MappingsFolder = new(Path.Combine(ProfileInstallationFolder.ToString(), ".mappings"));
+    public static readonly DirectoryInfo UEDBMappingsFolder = new(Path.Combine(MappingsFolder.ToString(), ".uedb"));
+    public static readonly DirectoryInfo LogsFolder = new(Path.Combine(DataFolder, ".logs"));
+    private static readonly DirectoryInfo ExportFolder = new(Path.Combine(RuntimeFolder.ToString(), ".export"));
+    public static readonly DirectoryInfo AudioFilesFolder = new(Path.Combine(ExportFolder.ToString(), ".audio"));
+    
+    public static void EnsureDirectories()
+    {
+        Directory.CreateDirectory(ProfilesFolder.FullName);
+        Directory.CreateDirectory(InstallationFolder.FullName);
+        Directory.CreateDirectory(RuntimeFolder.FullName);
+        Directory.CreateDirectory(ProfileInstallationFolder.FullName);
+        Directory.CreateDirectory(OnDemandFolder.FullName);
+        Directory.CreateDirectory(OnDemandChunksFolder.FullName);
+        Directory.CreateDirectory(OnDemandManifestFolder.FullName);
+        Directory.CreateDirectory(MappingsFolder.FullName);
+        Directory.CreateDirectory(UEDBMappingsFolder.FullName);
+        Directory.CreateDirectory(LogsFolder.FullName);
+        Directory.CreateDirectory(ExportFolder.FullName);
+        Directory.CreateDirectory(AudioFilesFolder.FullName);
+    }
 }

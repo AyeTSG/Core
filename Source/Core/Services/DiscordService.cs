@@ -21,7 +21,7 @@ public class DiscordService : IService
         {
             LargeImageKey = "logo",
             
-            SmallImageText = $"{VERSION} ({COMMIT})",
+            SmallImageText = $"{VERSION}",
             SmallImageKey = $"small_image",
         },
         Buttons =

@@ -68,18 +68,19 @@
                     <!-- Header -->
                     <Grid ColumnDefinitions="Auto,*,Auto">
 
-                      <!-- Splash -->
-                      <profilesControls:ProfileSplashControl
-                        SplashScale="2.45"
-                        Radius="20"
-                        DataContext="{Binding Profile}">
-                        <profilesControls:ProfileSplashControl.RenderTransform>
-                          <ScaleTransform
-                            ScaleX="{Binding ScaledMoreUp, RelativeSource={RelativeSource AncestorType={x:Type profilesViews:ProfileCard}}}"
-                            ScaleY="{Binding ScaledMoreUp, RelativeSource={RelativeSource AncestorType={x:Type profilesViews:ProfileCard}}}" />
-                        </profilesControls:ProfileSplashControl.RenderTransform>
-
-                      </profilesControls:ProfileSplashControl>
+                      <Grid>
+                        <!-- Splash -->
+                        <profilesControls:ProfileSplashControl
+                          SplashScale="2.45"
+                          Radius="20"
+                          DataContext="{Binding Profile}">
+                          <profilesControls:ProfileSplashControl.RenderTransform>
+                            <ScaleTransform
+                              ScaleX="{Binding ScaledMoreUp, RelativeSource={RelativeSource AncestorType={x:Type profilesViews:ProfileCard}}}"
+                              ScaleY="{Binding ScaledMoreUp, RelativeSource={RelativeSource AncestorType={x:Type profilesViews:ProfileCard}}}" />
+                          </profilesControls:ProfileSplashControl.RenderTransform>
+                        </profilesControls:ProfileSplashControl>
+                      </Grid>
                       
                       <!-- Profile Info -->
                       <StackPanel Grid.Column="1"

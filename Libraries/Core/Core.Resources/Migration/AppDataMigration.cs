@@ -10,10 +10,16 @@ public static class AppDataMigration
 
     public static void Apply()
     {
+        MigrateDirectory(PreviousName, Globals.CODENAME);
+        MigrateDirectory(Path.Combine(Globals.CODENAME, "Profiles"), Path.Combine(Globals.CODENAME, ".profiles"));
+    }
+    
+    public static void MigrateDirectory(string oldRelativePath, string newRelativePath)
+    {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        var oldPath = Path.Combine(appData, PreviousName);
-        var newPath = Path.Combine(appData, Globals.CODENAME);
+        var oldPath = Path.Combine(appData, oldRelativePath);
+        var newPath = Path.Combine(appData, newRelativePath);
 
         if (!Directory.Exists(oldPath) || Directory.Exists(newPath))
         {

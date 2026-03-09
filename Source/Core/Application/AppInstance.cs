@@ -34,6 +34,7 @@ public class AppInstance : Avalonia.Application
 
         /* AppData Migration */
         AppDataMigration.Apply();
+        EnsureDirectories();
         
         AppServices.Initialize();
 

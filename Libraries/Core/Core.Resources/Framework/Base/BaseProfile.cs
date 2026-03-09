@@ -124,7 +124,7 @@ public partial class BaseProfile : ObservableValidator
     [JsonIgnore]
     public bool IsNameEmpty => string.IsNullOrEmpty(Name);
     
-    [ObservableProperty] private bool _TexturesOnDemand;
+    [ObservableProperty] private bool _TexturesOnDemand = true;
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     
     [JsonIgnore] public BaseProvider Provider = null!;

@@ -1,5 +1,5 @@
 global using static Core.Resources.Globals;
-
+using Core.API.Models.Base;
 using RestSharp;
 using RestSharp.Serializers.NewtonsoftJson;
 using Core.API.Models.GitHub;
@@ -16,4 +16,5 @@ public static class Globals
         configureSerialization: s => s.UseSerializer<JsonNetSerializer>());
     
     public static GitHubAPI GitHub { get; } = new(RestClient);
+    public static APIBase API { get; } = new(RestClient);
 }

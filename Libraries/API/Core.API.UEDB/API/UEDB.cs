@@ -53,7 +53,7 @@ public class UEDB(RestClient client, string gameName) : APIBase(client, "https:/
             return null;
         }
 
-        var targetFolder = !string.IsNullOrWhiteSpace(version) ? Path.Combine(_mappingsFolder, version) : _mappingsFolder;
+        var targetFolder = !string.IsNullOrWhiteSpace(version) ? Path.Combine(_mappingsFolder, ".uedb", version) : Path.Combine(_mappingsFolder, ".uedb");
         var mapping = mappings!.GetFirstMapping();
         var (_, url, fileName) = mapping!.Value;
         

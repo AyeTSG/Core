@@ -6,6 +6,7 @@
     xmlns:models="clr-namespace:Core.Models.Profiles"
     xmlns:profiles="clr-namespace:Core.Controls.Profiles"
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    xmlns:framework="clr-namespace:Core.Services.Framework"
     x:Class="Core.Controls.Profiles.ProfileSplashControl"
     x:DataType="models:Profile"
     mc:Ignorable="d"
