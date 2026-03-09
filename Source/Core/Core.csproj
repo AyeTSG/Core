@@ -224,25 +224,25 @@
     <Folder Include="Assets\Thumbnails\Update\" />
   </ItemGroup>
 
-    <Target Name="IncludePlugins" BeforeTargets="ResolveProjectReferences">
-        <ItemGroup>
-            <ProjectReference Include="..\..\Plugins\Branded\**\Core.Plugins.*.csproj" />
-            <ProjectReference Include="..\..\Plugins\**\Core.Plugins.*.csproj" />
-        </ItemGroup>
-    </Target>
+  <Target Name="IncludePlugins" BeforeTargets="ResolveProjectReferences">
+      <ItemGroup>
+        <ProjectReference Include="..\..\Plugins\Branded\**\Core.Plugins.*.csproj" />
+        <ProjectReference Include="..\..\Plugins\**\Core.Plugins.*.csproj" />
+      </ItemGroup>
+  </Target>
 
-    <Target Name="CopyPluginDllsToDebug" AfterTargets="ResolveReferences">
-        <ItemGroup>
-            <BuiltPluginDlls Include="..\..\Plugins\Branded\**\bin\Debug\$(TargetFramework)\$(RuntimeIdentifier)\Core.Plugins.*.dll" />
-            <BuiltPluginDlls Include="..\..\Plugins\**\bin\Debug\$(TargetFramework)\$(RuntimeIdentifier)\Core.Plugins.*.dll" />
-        </ItemGroup>
+  <Target Name="CopyPluginDllsToDebug" AfterTargets="ResolveReferences">
+    <ItemGroup>
+        <BuiltPluginDlls Include="..\..\Plugins\Branded\**\bin\Debug\$(TargetFramework)\$(RuntimeIdentifier)\Core.Plugins.*.dll" />
+        <BuiltPluginDlls Include="..\..\Plugins\**\bin\Debug\$(TargetFramework)\$(RuntimeIdentifier)\Core.Plugins.*.dll" />
+    </ItemGroup>
 
-        <Message Text="Found plugin: %(BuiltPluginDlls.Identity)" Importance="high" />
+    <Message Text="Found plugin: %(BuiltPluginDlls.Identity)" Importance="high" />
 
-        <Copy SourceFiles="@(BuiltPluginDlls)"
-              DestinationFolder="$(OutputPath)Plugins\"
-              SkipUnchangedFiles="true" />
-    </Target>
+    <Copy SourceFiles="@(BuiltPluginDlls)"
+          DestinationFolder="$(OutputPath)Plugins\"
+          SkipUnchangedFiles="true" />
+  </Target>
 
   <Target Name="CopyPlugins" AfterTargets="Publish">
     <ItemGroup>

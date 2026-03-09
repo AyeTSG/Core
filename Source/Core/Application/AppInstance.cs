@@ -5,7 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
-
+using Core.Resources.Migration;
 using Serilog;
 
 using Core.Services.Framework;
@@ -31,6 +31,9 @@ public class AppInstance : Avalonia.Application
 #if DEBUG
         debugShowStartup = false;
 #endif
+
+        /* AppData Migration */
+        AppDataMigration.Apply();
         
         AppServices.Initialize();
 

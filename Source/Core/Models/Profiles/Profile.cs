@@ -37,6 +37,7 @@ using Core.Resources.Extensions;
 using Core.Resources.Framework.Base;
 using Core.Resources.Framework.CUEParse;
 using Core.Plugins.OnDemand;
+using Core.Resources.Migration;
 using Core.Windows;
 
 namespace Core.Models.Profiles;
@@ -592,6 +593,8 @@ public class Profile : BaseProfileDisplay
                 var profileSetting = JsonSerializer.Deserialize<Profile>(json);
 
                 if (profileSetting is null) return null;
+
+                AppDataMigration.ApplyToProfile(profileSetting);
 
                 profileSetting.Display.Profile = profileSetting;
                 profileSetting.Display.Splash.Profile = profileSetting;
