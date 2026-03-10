@@ -10,13 +10,13 @@
 
     Title="{Binding Title}"
     
-    Width="680" Height="705"
+    Width="680" Height="650"
     CanResize="False"
     
     mc:Ignorable="d"
     
     d:DesignWidth="680"
-    d:DesignHeight="705">
+    d:DesignHeight="650">
     
     <Window.Styles>
         <Style Selector="CaptionButtons">
@@ -34,53 +34,22 @@
     
     <Grid Margin="{Binding $parent[Window].OffScreenMargin}">
         <Grid>
-            <Grid VerticalAlignment="Top" RowDefinitions="Auto,*">
-                <Grid Height="381" Width="800" IsHitTestVisible="False">
-                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
-                           Source="/Assets/Thumbnails/Default.png">
-                        <Image.OpacityMask>
-                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                                <GradientStop Color="#FF000000" Offset="0.8" />
-                                <GradientStop Color="#00000000" Offset="1" />
-                            </LinearGradientBrush>
-                        </Image.OpacityMask>
-                    </Image>
-                    
-                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
-                           IsVisible="{Binding IsUpdate}"
-                           Source="/Assets/Thumbnails/Update.png">
-                        <Image.OpacityMask>
-                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                                <GradientStop Color="#FF000000" Offset="0.8" />
-                                <GradientStop Color="#00000000" Offset="1" />
-                            </LinearGradientBrush>
-                        </Image.OpacityMask>
-                    </Image>
-                    
-                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
-                           IsVisible="{Binding IsDevelopmental}"
-                           Source="/Assets/Thumbnails/Developmental.png">
-                        <Image.OpacityMask>
-                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                                <GradientStop Color="#FF000000" Offset="0.8" />
-                                <GradientStop Color="#00000000" Offset="1" />
-                            </LinearGradientBrush>
-                        </Image.OpacityMask>
-                    </Image>
-                    
-                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
-                           IsVisible="{Binding IsNew}"
-                           Source="/Assets/Thumbnails/Update/0.0.4.5.png">
-                        <Image.OpacityMask>
-                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                                <GradientStop Color="#FF000000" Offset="0.8" />
-                                <GradientStop Color="#00000000" Offset="1" />
-                            </LinearGradientBrush>
-                        </Image.OpacityMask>
-                    </Image>
-                </Grid>
+            <!-- Background blur effect -->
+            <Border Height="50" Margin="200 0 200 0" Opacity="1"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Effect>
+                    <BlurEffect Radius="450"/>
+                </Border.Effect>
+            </Border>
+            
+            <Grid VerticalAlignment="Stretch">
 
-                <StackPanel Grid.Row="1" Margin="32 32" Spacing="20">
+                <StackPanel Margin="32 0 32 100" Spacing="20" VerticalAlignment="Bottom">
                     <Border IsVisible="{Binding Tag}" Background="{Binding TagBackground}" CornerRadius="10" HorizontalAlignment="Left" Padding="10">
                         <TextBlock Name="TagText" Text="{Binding TagText}" FontSize="15" Foreground="{Binding TagForeground}"/>
                     </Border>

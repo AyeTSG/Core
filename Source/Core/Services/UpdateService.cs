@@ -34,9 +34,9 @@ public class UpdateService : IService
         
             if (CurrentVersion > LatestReleaseVersion) return;
         }
-
-        return;
         
+        return;
+
         var win = new GalleryWindow
         {
             Height = 678
