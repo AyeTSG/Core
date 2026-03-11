@@ -232,7 +232,7 @@
                   </Grid>
                 </Grid>
                 
-                <Grid VerticalAlignment="Bottom" ColumnDefinitions="*,10,50" Margin="25,0,25,20">
+                <Grid VerticalAlignment="Bottom" ColumnDefinitions="*,10,50" Margin="25,0,25,25">
                   <Grid Grid.Column="0" IsEnabled="{Binding !Profile.HasValidationErrors}">
                     <Button
                       x:Name="StartButton"
