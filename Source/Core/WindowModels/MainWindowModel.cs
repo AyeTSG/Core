@@ -14,7 +14,6 @@ using CommunityToolkit.Mvvm.Input;
 
 using FluentAvalonia.UI.Controls;
 using FluentIcons.Common;
-using Microsoft.WindowsAPICodePack.Taskbar;
 using Core.Cloud.Controllers;
 using Core.Controls.Profiles;
 using Core.Framework.Models;
@@ -377,7 +376,7 @@ public partial class MainWindowModel : WindowModelBase
         CurrentProfile.IsInitialized = false;
 
         _ = Dispatcher.UIThread.InvokeAsync(() => ProfileSelectionVM.UpdateProfileCard(CurrentProfile));
-        App.SetAppProgressState(TaskbarProgressBarState.Indeterminate);
+        // App.SetAppProgressState(TaskbarProgressBarState.Indeterminate);
 
         NavigateToStatus(AppStatus.Active);
         
@@ -397,7 +396,7 @@ public partial class MainWindowModel : WindowModelBase
         
         Dispatcher.UIThread.InvokeAsync(StopTitleBarBeatEffect);
         Dispatcher.UIThread.InvokeAsync(() => ProfileSelectionVM.UpdateProfileCard(CurrentProfile));
-        App.SetAppProgressState(TaskbarProgressBarState.NoProgress);
+        // App.SetAppProgressState(TaskbarProgressBarState.NoProgress);
 
         UpdateDiscordDetailStatus();
         OnPropertyChanged(nameof(IsProfileInitialized));
@@ -408,7 +407,7 @@ public partial class MainWindowModel : WindowModelBase
         if (inProfile.FileName != CurrentProfile!.FileName) return;
         
         NavigateToStatus(AppStatus.Idle);
-        App.SetAppProgressState(TaskbarProgressBarState.Error);
+        // App.SetAppProgressState(TaskbarProgressBarState.Error);
                     
         await Dispatcher.UIThread.InvokeAsync(() =>
         {

@@ -3,8 +3,6 @@ using Avalonia.Input.Platform;
 using Avalonia.Platform.Storage;
 
 using FluentAvalonia.UI.Controls;
-
-using Microsoft.WindowsAPICodePack.Taskbar;
 using Serilog;
 
 using System;
@@ -17,7 +15,6 @@ using System.Threading.Tasks;
 
 using Core.Framework;
 using Core.Models;
-using Microsoft.VisualBasic.Logging;
 using Log = Serilog.Log;
 
 namespace Core.Services;
@@ -95,13 +92,6 @@ public class AppService : IService
         App.Clipboard.SetTextAsync(Text);
     }
 
-    public void SetAppProgressState(TaskbarProgressBarState State)
-    {
-        if (TaskbarManager.IsPlatformSupported || !HasActiveWindow())
-        {
-            TaskbarManager.Instance.SetProgressState(State);
-        }
-    }
 
     private static bool HasActiveWindow()
     {
@@ -110,38 +100,5 @@ public class AppService : IService
             return desktop.MainWindow is { IsVisible: true };
         }
         return false;
-    }
-
-    [RequiresAssemblyFiles]
-    public void RefreshWindowJumpList()
-    {
-        if (!TaskbarManager.IsPlatformSupported)
-        {
-            return;
-        }
-        
-        Log.Information($"Updating Recent Jump List");
-
-        var jumpList = JumpList.CreateJumpList();
-        var exePath = Environment.ProcessPath;
-        
-        Log.Information($"Entry Assembly Location: {exePath}");
-        
-        var recentCategory = new JumpListCustomCategory("Recent");
-
-        foreach (var Profile in GameDetection.GetRecentlyUsedProfiles(5))
-        {
-            var profileLink = new JumpListLink(exePath, Profile.Name)
-            {
-                Arguments = $"--launchProfile={Profile.FileID}"
-            };
-
-            recentCategory.AddJumpListItems(profileLink);
-        }
-        
-        jumpList.AddCustomCategories(recentCategory);
-        jumpList.Refresh();
-        
-        Log.Information($"Updated Recent Jump List");
     }
 }

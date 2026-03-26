@@ -96,7 +96,7 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
             || Profile.ArchiveDirectory.IsNullOrEmpty()
             || !Directory.Exists(Profile.ArchiveDirectory)) return;
         
-        var parts = Profile.ArchiveDirectory.Split(['/', '\\'], StringSplitOptions.RemoveEmptyEntries);
+        var parts = Profile.ArchiveDirectory.Split(new[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries);
 
         string? version = null;
 

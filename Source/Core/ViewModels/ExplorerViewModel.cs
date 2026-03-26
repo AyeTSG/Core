@@ -169,7 +169,7 @@ public partial class ExplorerViewModel : ViewModelBase
                 for (int i = 0; i < allPairs.Length; i += batchSize)
                 {
                     token.ThrowIfCancellationRequested();
-                    var batch = allPairs.AsSpan(i, Math.Min(batchSize, allPairs.Length - i));
+                    var batch = allPairs.Skip(i).Take(Math.Min(batchSize, allPairs.Length - i)).ToArray();
     
                     Parallel.ForEach(batch.ToArray(), parallelOptions, pair =>
                     {
