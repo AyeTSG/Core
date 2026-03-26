@@ -16,9 +16,9 @@
       <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
       <PublishSingleFile>true</PublishSingleFile>
 
-      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+      <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-      <TargetFramework>net8.0-windows</TargetFramework>
+      <TargetFramework>net8.0</TargetFramework>
       <SelfContained>true</SelfContained>
       <OutputType>WinExe</OutputType>
       <Nullable>enable</Nullable>
